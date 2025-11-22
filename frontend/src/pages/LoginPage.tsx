@@ -14,7 +14,7 @@ const LoginPage: React.FC = () => {
     try {
         const response = await loginUser(data);
 
-        console.log("User created:", response.data);
+        console.log("User loged in:", response.data);
 
         login(data.email);
         navigate("/");
@@ -22,9 +22,6 @@ const LoginPage: React.FC = () => {
         console.error("Registration error:", error);
         alert(error.response?.data?.message || "Failed to create user");
     }
-
-    login(data.email);
-    navigate("/");
   };
 
   return (
@@ -37,9 +34,9 @@ const LoginPage: React.FC = () => {
             <input
               type="email"
               className={styles.input}
-              {...register('email', { required: 'Email is required' })}
+              {...register('email', { required: 'Email is required!' })}
             />
-            {errors.email && <span className={styles.error}>{errors.email.message as string}</span>}
+            {errors.email && <p className="error-message">{errors.email.message as string}</p>}
           </div>
 
           <div className={styles.inputGroup}>
@@ -47,9 +44,9 @@ const LoginPage: React.FC = () => {
             <input
               type="password"
               className={styles.input}
-              {...register('password', { required: 'Password is required' })}
+              {...register('password', { required: 'Password is required!' })}
             />
-            {errors.password && <span className={styles.error}>{errors.password.message as string}</span>}
+            {errors.password && <span className="error-message">{errors.password.message as string}</span>}
           </div>
 
           <button type="submit" className={styles.button}>Sign In</button>

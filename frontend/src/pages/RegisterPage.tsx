@@ -42,9 +42,9 @@ const RegisterPage: React.FC = () => {
             <input
               type="text"
               className={styles.input}
-              {...register('firstName', { required: 'First name is required' })}
+              {...register('firstName', { required: 'First name is required!' })}
             />
-            {errors.firstName && <span className={styles.error}>{errors.firstName.message as string}</span>}
+            {errors.firstName && <span className="error-message">{errors.firstName.message as string}</span>}
           </div>
 
           <div className={styles.inputGroup}>
@@ -52,9 +52,9 @@ const RegisterPage: React.FC = () => {
             <input
               type="text"
               className={styles.input}
-              {...register('lastName', { required: 'Last name is required' })}
+              {...register('lastName', { required: 'Last name is required!' })}
             />
-            {errors.lastName && <span className={styles.error}>{errors.lastName.message as string}</span>}
+            {errors.lastName && <span className="error-message">{errors.lastName.message as string}</span>}
           </div>
 
           <div className={styles.inputGroup}>
@@ -62,9 +62,9 @@ const RegisterPage: React.FC = () => {
             <input
               type="email"
               className={styles.input}
-              {...register('email', { required: 'Email is required' })}
+              {...register('email', { required: 'Email is required!' })}
             />
-            {errors.email && <span className={styles.error}>{errors.email.message as string}</span>}
+            {errors.email && <span className="error-message">{errors.email.message as string}</span>}
           </div>
 
           <div className={styles.inputGroup}>
@@ -72,9 +72,9 @@ const RegisterPage: React.FC = () => {
             <input
               type="password"
               className={styles.input}
-              {...register('password', { required: 'Password is required', minLength: { value: 6, message: 'Password must be at least 6 characters' } })}
+              {...register('password', { required: 'Password is required!', minLength: { value: 6, message: 'Password must be at least 6 characters' } })}
             />
-            {errors.password && <span className={styles.error}>{errors.password.message as string}</span>}
+            {errors.password && <span className="error-message">{errors.password.message as string}</span>}
           </div>
 
           <button type="submit" className={styles.button}>Sign Up</button>
