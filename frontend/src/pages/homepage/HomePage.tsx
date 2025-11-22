@@ -5,8 +5,8 @@ import ClassesBar from "./components/ClassesBar";
 import QuickView from "./components/QuickView";
 import HomePageHeader from "./components/HomePageHeading";
 import AddClass from "./components/AddClass";
-import { getClasses } from "../../api/classesApi"
-import { useAuthStore } from "../../store/authStore"
+import { getClasses } from "../../api/classesApi";
+import { useAuthStore } from "../../store/authStore";
 import Settings from "./components/Settings";
 
 // API not ready yet — keep call for later
@@ -49,10 +49,10 @@ const HomePage: React.FC = () => {
         <SearchBar />
         <ActionBar
           onMyNotes={async () => {
-            setView("notes");
             if (!user?.id) return;
             const response = await getClasses(user.id);
             setClassList(response.data);
+            setView("notes");
           }}
           onRecordLecture={() => setView("record")}
           onAddNotes={() => setView("add")}
@@ -70,17 +70,12 @@ const HomePage: React.FC = () => {
           </div>
           <QuickView />
         </div>
-      }
-      {view === "add" && 
-      <div className="space-y-4 p-6">
-        <AddClass />
-      </div>
-      }
-      {view === "custom" && 
-      <div className="space-y-4 p-6">
-        <Settings />
-      </div>
-      }
+      )}
+      {view === "add" && (
+        <div className="space-y-4 p-6">
+          <AddClass />
+        </div>
+      )}
     </div>
   );
 };
