@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styles from "./homepage.module.css";
 import SearchBar from "./components/search";
+import ActionBar from "./components/ActionBar";
 import ClassesBar from "./components/ClassesBar";
 // API not ready yet — keep call for later
 // import { getClasses as fetchClasses } from "../../api/classesApi";
@@ -21,6 +21,11 @@ const HomePage: React.FC = () => {
     { id: "6", name: "Biologija" },
     { id: "7", name: "Kemija" },
     { id: "8", name: "Geografija" },
+    { id: "9", name: "test1" },
+    { id: "10", name: "test2" },
+    { id: "11", name: "test3" },
+    { id: "12", name: "test4" },
+    { id: "13", name: "test5" },
   ];
 
   const [classList] = useState<Class[]>(mockClasses);
@@ -46,18 +51,21 @@ const HomePage: React.FC = () => {
   */
 
   return (
-    <>
-      <div className={styles.searchContainer}>
+    <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col items-center justify-start pt-8 px-4">
+      <div className="w-full max-w-6xl space-y-4">
         <SearchBar />
+        <div className="flex justify-center">
+          <ActionBar />
+        </div>
+        <div className="flex justify-center">
+          <ClassesBar
+            classes={classList}
+            selectedId={selectedId}
+            onSelect={(id) => setSelectedId(id)}
+          />
+        </div>
       </div>
-      <div className={styles.classesBarContainer}>
-        <ClassesBar
-          classes={classList}
-          selectedId={selectedId}
-          onSelect={(id) => setSelectedId(id)}
-        />
-      </div>
-    </>
+    </div>
   );
 };
 
