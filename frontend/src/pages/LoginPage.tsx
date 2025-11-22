@@ -1,13 +1,53 @@
-import React from "react";
-import { SignIn } from "@clerk/clerk-react";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import styles from './auth.module.css';
 
 const LoginPage: React.FC = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-    return(
-        <div className="flex justify-center items-center h-screen">
-            <SignIn />
-        </div>
-    );
-}
+  const onSubmit = (data: any) => {
+    // Mock login logic
+    login(data.email);
+    navigate("/");
+  };
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.formWrapper}>
+        <h2 className={styles.title}>Sign In</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>Email</label>
+            <input
+              type="email"
+              className={styles.input}
+              {...register('email', { required: 'Email is required' })}
+            />
+            {errors.email && <span className={styles.error}>{errors.email.message as string}</span>}
+          </div>
+
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>Password</label>
+            <input
+              type="password"
+              className={styles.input}
+              {...register('password', { required: 'Password is required' })}
+            />
+            {errors.password && <span className={styles.error}>{errors.password.message as string}</span>}
+          </div>
+
+          <button type="submit" className={styles.button}>Sign In</button>
+        </form>
+        <p className={styles.linkText}>
+          Don't have an account? <Link to="/sign-up" className={styles.link}>Sign Up</Link>
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export default LoginPage;
