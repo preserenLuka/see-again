@@ -8,7 +8,16 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true},
   },
-  { timestamps: true }
+  { timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform(doc, ret) {
+        ret.id = ret._id;   // add id
+        delete ret._id;     // remove _id
+        delete ret.__v;     // optional: remove __v
+      }
+    }
+   }
 );
 
 export const User = mongoose.model("User", userSchema);

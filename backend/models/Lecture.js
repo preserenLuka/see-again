@@ -25,7 +25,16 @@ const lectureSchema = new mongoose.Schema(
       default: [],
     },
   },
-  { timestamps: true }
+  { timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform(doc, ret) {
+        ret.id = ret._id;   // add id
+        delete ret._id;     // remove _id
+        delete ret.__v;     // optional: remove __v
+      }
+    }
+   }
 );
 
 export const Lecture = mongoose.model("Lecture", lectureSchema);

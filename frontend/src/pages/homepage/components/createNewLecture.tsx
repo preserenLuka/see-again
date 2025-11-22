@@ -4,15 +4,17 @@ import { createLecture } from "../../../api/lectureApi";
 type Class = {
   name: string;
   studyYear: string;
-  userId: string;
+  classId: string;
 };
 
 interface CreateNewLectureProps {
   onLectureCreated?: () => void;
+  classId: string
 }
 
 const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
   onLectureCreated,
+  classId,
 }) => {
   const [isCreating, setIsCreating] = useState(false);
   const [title, setTitle] = useState("");
@@ -23,7 +25,7 @@ const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
       const response = await createLecture({
         name: data.name,
         studyYear: data.studyYear,
-        userId: "1",
+        classId: classId,
       });
 
       console.log("Lecture created:", response.data);
@@ -33,17 +35,16 @@ const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
       if (onLectureCreated) {
         onLectureCreated();
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error("Error creating lecture:", error);
-      alert(error.response?.data?.message || "Failed to create lecture");
     }
   };
 
   const handleSave = () => {
     handleCreateLecture({
       name: title,
-      studyYear: "2025", // Default value as not specified in UI
-      userId: "1",
+      studyYear: "2025",
+      classId: classId,
     });
   };
 

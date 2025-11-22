@@ -69,7 +69,9 @@ const HomePage: React.FC = () => {
               onSelect={(id) => setSelectedId(id)}
             />
           </div>
-          <QuickView />
+          <QuickView 
+            classId={selectedId}
+          />
         </div>
       }
       {view === "add" && 

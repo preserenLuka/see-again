@@ -3,7 +3,7 @@ import api from "./axios.ts";
 type Class = {
     name: string,
     studyYear: string,
-    userId: string,
+    classId: string,
 }
 
 export const createLecture = (classData: Class) => {

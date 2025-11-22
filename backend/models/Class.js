@@ -10,7 +10,16 @@ const classSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform(doc, ret) {
+        ret.id = ret._id;   // add id
+        delete ret._id;     // remove _id
+        delete ret.__v;     // optional: remove __v
+      }
+    }
+   }
 );
 
 export const Class = mongoose.model("Class", classSchema);

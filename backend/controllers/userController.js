@@ -17,7 +17,7 @@ export const createUser = async (req, res) => {
 
     const user = await User.create({ firstName, lastName, email, password: hashedPassword });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
@@ -60,7 +60,7 @@ export const logInUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
@@ -126,7 +126,7 @@ export const getCurrentUser = async (req, res) => {
   const u = req.user;
 
   res.json({
-    id: u._id,
+    id: u.id,
     firstName: u.firstName,
     lastName: u.lastName,
     email: u.email,

@@ -9,8 +9,11 @@ interface QuickViewItem {
   date: string;
   tags: string[];
 }
+type QuickViewProps = {
+  classId: string
+}
 
-const QuickView: React.FC = () => {
+const QuickView: React.FC<QuickViewProps> = (classId) => {
   const [lectureList, setLectureList] = useState<QuickViewItem[]>([]);
   const getLectureList = async () => {
     try {
@@ -19,9 +22,8 @@ const QuickView: React.FC = () => {
       console.log("List of Lectures:", response.data);
 
       setLectureList(response.data);
-    } catch (error: any) {
+    } catch (error) {
       console.error("Error getting lectures:", error);
-      alert(error.response?.data?.message || "Failed to get lectures");
     }
   };
 
@@ -31,7 +33,7 @@ const QuickView: React.FC = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <CreateNewLecture onLectureCreated={getLectureList} />
+      <CreateNewLecture onLectureCreated={getLectureList} classId={classId} />
       {lectureList.map((item, index) => {
         const dateObj = new Date(item.date);
         const monthYear = dateObj.toLocaleString("en-US", {
