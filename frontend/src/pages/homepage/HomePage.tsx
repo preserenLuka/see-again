@@ -54,7 +54,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col items-center justify-start pt-8 px-4">
-      <div className="w-full max-w-6xl space-y-4">
+      <div className="w-full max-w-3xl space-y-4">
         <HomePageHeader />
         <SearchBar />
         <ActionBar />
