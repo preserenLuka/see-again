@@ -121,7 +121,16 @@ export const deleteUser = async (req, res) => {
 };
 
 export const getCurrentUser = async (req, res) => {
-  res.json(req.user);
+  if (!req.user) return res.status(401).json({ message: "Not authenticated" });
+
+  const u = req.user;
+
+  res.json({
+    id: u._id,
+    firstName: u.firstName,
+    lastName: u.lastName,
+    email: u.email,
+  });
 };
 
 export const logoutUser = async (req, res) => {

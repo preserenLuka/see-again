@@ -42,7 +42,8 @@ export const getClassById = async (req, res) => {
 
 export const getAllClasses = async (req, res) => {
   try {
-    const classes = await Class.find({ createdAt: -1 });
+    console.log(req.params.id);
+    const classes = await Class.find({ user: req.params.id });
 
     res.status(200).json(classes);
   } catch (err) {
