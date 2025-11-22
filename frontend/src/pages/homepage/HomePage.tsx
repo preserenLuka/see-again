@@ -7,6 +7,8 @@ import HomePageHeader from "./components/HomePageHeading";
 import AddClass from "./components/AddClass";
 import { getClasses } from "../../api/classesApi"
 import { useAuthStore } from "../../store/authStore"
+import Settings from "./components/Settings";
+
 // API not ready yet — keep call for later
 // import { getClasses as fetchClasses } from "../../api/classesApi";
 
@@ -73,6 +75,11 @@ const HomePage: React.FC = () => {
       {view === "add" && 
       <div className="space-y-4 p-6">
         <AddClass />
+      </div>
+      }
+      {view === "custom" && 
+      <div className="space-y-4 p-6">
+        <Settings />
       </div>
       }
     </div>
