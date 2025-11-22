@@ -5,8 +5,8 @@ import ClassesBar from "./components/ClassesBar";
 import QuickView from "./components/QuickView";
 import HomePageHeader from "./components/HomePageHeading";
 import AddClass from "./components/AddClass";
-import { getClasses } from "../../api/classesApi"
-import { useAuthStore } from "../../store/authStore"
+import { getClasses } from "../../api/classesApi";
+import { useAuthStore } from "../../store/authStore";
 // API not ready yet — keep call for later
 // import { getClasses as fetchClasses } from "../../api/classesApi";
 
@@ -15,7 +15,6 @@ type Class = {
   name: string;
 };
 type ViewMode = "none" | "notes" | "record" | "add" | "custom";
-
 
 const HomePage: React.FC = () => {
   const [classList, setClassList] = useState<Class[]>([]);
@@ -43,22 +42,22 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col items-center justify-start pt-8 px-4">
-      <div className="w-full max-w-3xl space-y-4">
+      <div className="w-full max-w-6xl space-y-4">
         <HomePageHeader />
         <SearchBar />
-        <ActionBar 
+        <ActionBar
           onMyNotes={async () => {
-            if(!user?.id) return;
+            setView("notes");
+            if (!user?.id) return;
             const response = await getClasses(user.id);
-            setClassList(response.data)
-            setView("notes")
+            setClassList(response.data);
           }}
           onRecordLecture={() => setView("record")}
           onAddNotes={() => setView("add")}
           onCustomize={() => setView("custom")}
-            />
+        />
       </div>
-      {view === "notes" &&
+      {view === "notes" && (
         <div className="w-full max-w-6xl space-y-4">
           <div className="flex justify-center mt-6">
             <ClassesBar
@@ -69,12 +68,12 @@ const HomePage: React.FC = () => {
           </div>
           <QuickView />
         </div>
-      }
-      {view === "add" && 
-      <div className="space-y-4 p-6">
-        <AddClass />
-      </div>
-      }
+      )}
+      {view === "add" && (
+        <div className="space-y-4 p-6">
+          <AddClass />
+        </div>
+      )}
     </div>
   );
 };
