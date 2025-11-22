@@ -23,3 +23,12 @@ body {
 .error-message {
   @apply text-sm text-red-500 mt-1 font-medium;
 }
+
+/* Hide scrollbar utility for ClassesBar */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
