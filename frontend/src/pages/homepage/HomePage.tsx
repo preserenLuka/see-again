@@ -24,23 +24,6 @@ const HomePage: React.FC = () => {
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
   const [view, setView] = useState<ViewMode>("none");
   const { user } = useAuthStore();
-  /*
-  // Uncomment when API is implemented
-  const loadClasses = async () => {
-    try {
-      const response = await fetchClasses();
-      const classes: Class[] = response?.data ?? [];
-      setClassList(classes);
-    } catch (error: any) {
-      console.error("Error getting classes:", error);
-      alert(error.response?.data?.message || "Failed to get classes");
-    }
-  };
-
-  useEffect(() => {
-    loadClasses();
-  }, []);
-  */
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col items-center justify-start pt-8 px-4">
@@ -74,6 +57,11 @@ const HomePage: React.FC = () => {
       {view === "add" && (
         <div className="space-y-4 p-6">
           <AddClass />
+        </div>
+      )}
+      {view === "custom" && (
+        <div className="space-y-4 p-6">
+          <Settings />
         </div>
       )}
     </div>
