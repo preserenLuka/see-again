@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import styles from './auth.module.css';
 import { loginUser } from "../api/userApi.ts"
+import { useAuthStore } from '../store/authStore';
 
 const LoginPage: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -15,6 +16,10 @@ const LoginPage: React.FC = () => {
         const response = await loginUser(data);
 
         console.log("User loged in:", response.data);
+
+        useAuthStore.setState({
+            user: response.data,
+        });
 
         login(data.email);
         navigate("/");
