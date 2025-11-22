@@ -4,7 +4,7 @@ import { connectDB } from "./db.js";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import classRoutes from "./routes/classRoutes.js";
-import lectureRoutes from "./routes/lectureRoute.js"
+import lectureRoutes from "./routes/lectureRoute.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config(); // load .env into process.env
@@ -27,8 +27,8 @@ app.use(express.json());
 connectDB();
 
 app.use("/api/users", userRoutes);
-app.use("/api/classes", classRoutes)
-app.use("app/lectures", lectureRoutes)
+app.use("/api/classes", classRoutes);
+app.use("/api/lectures", lectureRoutes);
 
 // Example health route
 app.get("/", (req, res) => {
