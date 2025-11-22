@@ -2,13 +2,11 @@ import { Class } from "../models/Class.js";
 
 export const createClass = async (req, res) => {
   try {
-    const { name, professor, studyYear, description, userId } = req.body;
+    const { name, studyYear, userId } = req.body;
 
     const newClass = await Class.create({
       name,
-      professor,
       studyYear,
-      description,
       user: userId,
     });
 
@@ -44,7 +42,7 @@ export const getClassById = async (req, res) => {
 
 export const getAllClasses = async (req, res) => {
   try {
-    const classes = await Class.find();
+    const classes = await Class.find({ createdAt: -1 });
 
     res.status(200).json(classes);
   } catch (err) {
