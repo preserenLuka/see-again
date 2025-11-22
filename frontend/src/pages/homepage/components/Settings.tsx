@@ -1,26 +1,42 @@
 import React from "react";
+import { useTheme } from "../../../context/ThemeContext";
+import type { Theme, CharacterHeight } from "../../../context/ThemeContext";
 
 const Settings: React.FC = () => {
-    return (
-        <div className="border-y border-gray-300 flex flex-col">
-            <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8 first:mt-0">Font size</h2>
-                <select>
-                    <option value="small">small</option>
-                    <option value="small">medium</option>
-                    <option value="small">large</option>
-                </select>
-            </div>
-            <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8 first:mt-0">Theme color</h2>
-                <select>
-                    <option value="dark">dark</option>
-                    <option value="white">white</option>
-                    <option value="blue">blue</option>
-                </select>
-            </div>
-        </div>
-    );
-}
+  const { theme, setTheme, characterHeight, setCharacterHeight } = useTheme();
+
+  return (
+    <div className="border-y border-border flex flex-col py-6 gap-8">
+      <div>
+        <h2 className="text-3xl font-bold text-primary-text mb-4">Font size</h2>
+        <select
+          value={characterHeight}
+          onChange={(e) =>
+            setCharacterHeight(e.target.value as CharacterHeight)
+          }
+          className="black-white-style px-4 py-2 w-full max-w-xs"
+        >
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+      <div>
+        <h2 className="text-3xl font-bold text-primary-text mb-4">
+          Theme color
+        </h2>
+        <select
+          value={theme}
+          onChange={(e) => setTheme(e.target.value as Theme)}
+          className="black-white-style px-4 py-2 w-full max-w-xs"
+        >
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="blue">Blue</option>
+        </select>
+      </div>
+    </div>
+  );
+};
 
 export default Settings;

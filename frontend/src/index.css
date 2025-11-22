@@ -20,6 +20,9 @@
 :root[data-theme="light"] {
   --bg-primary: #ffffff;
   --text-primary: #213547;
+  --bg-secondary: #f9fafb; /* gray-50 */
+  --text-secondary: #4b5563; /* gray-600 */
+  --border-color: #d1d5db; /* gray-300 */
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
@@ -27,6 +30,9 @@
 :root[data-theme="dark"] {
   --bg-primary: #242424;
   --text-primary: rgba(255, 255, 255, 0.87);
+  --bg-secondary: #1a1a1a;
+  --text-secondary: #9ca3af;
+  --border-color: #4b5563;
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
@@ -34,23 +40,26 @@
 :root[data-theme="blue"] {
   --bg-primary: #e0f2fe; /* Light blue */
   --text-primary: #0c4a6e; /* Dark blue */
+  --bg-secondary: #bae6fd;
+  --text-secondary: #0369a1;
+  --border-color: #7dd3fc;
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
 /* Character Heights (Density/Size) */
 :root[data-char-height="small"] {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
 }
 
 :root[data-char-height="medium"] {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.5;
 }
 
 :root[data-char-height="large"] {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1.6;
 }
 
