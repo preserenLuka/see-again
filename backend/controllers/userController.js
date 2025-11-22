@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import { User } from "../models/User.js";
-
+import jwt from "jsonwebtoken";
 // Create a new user
 export const createUser = async (req, res) => {
   try {
@@ -16,6 +16,17 @@ export const createUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const user = await User.create({ firstName, lastName, email, password: hashedPassword });
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false, // set true in production with https
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
 
     res.status(201).json({
         id: user.id,
@@ -49,6 +60,17 @@ export const logInUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false, // set true in production with https
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
     res.status(201).json({
         id: user.id,
         firstName: user.firstName,
@@ -56,7 +78,7 @@ export const logInUser = async (req, res) => {
         email: user.email,
     });
   } catch (err) {
-    console.error("Error creating user:", err.message);
+    console.error("Error loging in user:", err.message);
     res.status(400).json({ message: "Failed to Log in user", error: err.message });
   }
 };

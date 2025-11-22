@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import { connectDB } from "./db.js";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
+import classRoutes from "./routes/classRoutes.js";
+
 dotenv.config(); // load .env into process.env
 
 const app = express();
@@ -22,6 +24,7 @@ app.use(express.json());
 connectDB();
 
 app.use("/api/users", userRoutes);
+app.use("/api/classes", classRoutes)
 
 // Example health route
 app.get("/", (req, res) => {
