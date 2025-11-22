@@ -4,6 +4,7 @@ import { connectDB } from "./db.js";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import classRoutes from "./routes/classRoutes.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config(); // load .env into process.env
 
@@ -16,6 +17,7 @@ app.use(
     credentials: true,
   })
 );
+app.use(cookieParser());
 
 // Middleware to parse JSON bodies
 app.use(express.json());

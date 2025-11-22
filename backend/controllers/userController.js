@@ -119,3 +119,7 @@ export const deleteUser = async (req, res) => {
     res.status(500).json({ message: "Failed to delete user" });
   }
 };
+
+export const getCurrentUser = async (req, res) => {
+  res.json(req.user);
+};
