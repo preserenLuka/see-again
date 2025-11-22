@@ -22,7 +22,7 @@ type ViewMode = "none" | "notes" | "record" | "add" | "custom";
 const HomePage: React.FC = () => {
   const [classList, setClassList] = useState<Class[]>([]);
 
-  const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
+  const [selectedId, setSelectedId] = useState<string>("");
   const [view, setView] = useState<ViewMode>("none");
   const { user } = useAuthStore();
   /*

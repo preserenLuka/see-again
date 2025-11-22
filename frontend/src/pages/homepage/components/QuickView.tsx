@@ -13,7 +13,7 @@ type QuickViewProps = {
   classId: string
 }
 
-const QuickView: React.FC<QuickViewProps> = (classId) => {
+const QuickView: React.FC<QuickViewProps> = ({classId}) => {
   const [lectureList, setLectureList] = useState<QuickViewItem[]>([]);
   const getLectureList = async () => {
     try {
