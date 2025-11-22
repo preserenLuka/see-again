@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchBar from "./components/search";
 import ActionBar from "./components/ActionBar";
 import ClassesBar from "./components/ClassesBar";
+import QuickView from "./components/QuickView";
 // API not ready yet — keep call for later
 // import { getClasses as fetchClasses } from "../../api/classesApi";
 
@@ -64,6 +65,7 @@ const HomePage: React.FC = () => {
             onSelect={(id) => setSelectedId(id)}
           />
         </div>
+        <QuickView />
       </div>
     </div>
   );
