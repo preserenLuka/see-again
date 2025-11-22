@@ -24,7 +24,7 @@ const ClassesBar: React.FC<Props> = ({ classes, selectedId, onSelect }) => {
       pill.scrollIntoView({
         behavior: "smooth",
         block: "nearest",
-        inline: "start",
+        inline: "center",
       });
     }
   };
