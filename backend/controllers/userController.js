@@ -123,3 +123,8 @@ export const deleteUser = async (req, res) => {
 export const getCurrentUser = async (req, res) => {
   res.json(req.user);
 };
+
+export const logoutUser = async (req, res) => {
+    res.clearCookie("token");
+    res.json({ message: "User logged out successfully" });
+}

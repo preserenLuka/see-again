@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchBar from "./components/search";
 import ActionBar from "./components/ActionBar";
 import ClassesBar from "./components/ClassesBar";
+import HomePageHeader from "./components/HomePageHeading"
 // API not ready yet — keep call for later
 // import { getClasses as fetchClasses } from "../../api/classesApi";
 
@@ -53,6 +54,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col items-center justify-start pt-8 px-4">
       <div className="w-full max-w-6xl space-y-4">
+        <HomePageHeader />
         <SearchBar />
         <div className="flex justify-center">
           <ActionBar />
