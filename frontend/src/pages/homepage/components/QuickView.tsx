@@ -15,25 +15,27 @@ type QuickViewProps = {
 
 const QuickView: React.FC<QuickViewProps> = ({classId}) => {
   const [lectureList, setLectureList] = useState<QuickViewItem[]>([]);
-  const getLectureList = async () => {
+  const loadLectures = async () => {
     try {
-      const response = await getLectures();
-
-      console.log("List of Lectures:", response.data);
-
+      const response = await getLectures(classId);
       setLectureList(response.data);
-    } catch (error) {
-      console.error("Error getting lectures:", error);
+    } catch (err) {
+      console.error("Error fetching lectures:", err);
     }
   };
 
   useEffect(() => {
-    getLectureList();
-  }, []);
+    if (classId) {
+      loadLectures();
+    }
+  }, [classId]);
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <CreateNewLecture onLectureCreated={getLectureList} classId={classId} />
+       <CreateNewLecture 
+        onLectureCreated={loadLectures}
+        classId={classId}
+      />
       {lectureList.map((item, index) => {
         const dateObj = new Date(item.date);
         const monthYear = dateObj.toLocaleString("en-US", {
