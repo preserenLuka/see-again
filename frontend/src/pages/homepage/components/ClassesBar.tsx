@@ -33,7 +33,7 @@ const ClassesBar: React.FC<Props> = ({ classes, selectedId, onSelect }) => {
     <nav
       aria-label="Classes"
       ref={navRef}
-      className="flex gap-3 p-4 overflow-x-auto items-center w-full max-w-6xl mx-auto hide-scrollbar "
+      className="flex gap-3 p-4 overflow-x-auto items-center w-full max-w-6xl mx-auto hide-scrollbar border-y border-gray-300"
       style={{ WebkitOverflowScrolling: "touch" }}
     >
       {classes.map((c, idx) => {

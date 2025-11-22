@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import styles from './auth.module.css';
 import { createUser } from "../api/userApi.ts"
+import { useAuthStore } from '../store/authStore';
+
 
 type RegisterFormData = {
     firstName: string,
@@ -24,6 +26,10 @@ const RegisterPage: React.FC = () => {
       console.log("User created:", response.data);
 
       registerUser(data.email, data.firstName, data.lastName);
+
+      useAuthStore.setState({
+        user: response.data,
+      });
 
       navigate("/");
     } catch (error: any) {

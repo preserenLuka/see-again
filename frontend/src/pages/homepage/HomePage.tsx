@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import SearchBar from "./components/search";
 import ActionBar from "./components/ActionBar";
 import ClassesBar from "./components/ClassesBar";
-import HomePageHeader from "./components/HomePageHeading"
+import QuickView from "./components/QuickView";
+import HomePageHeader from "./components/HomePageHeading";
 // API not ready yet — keep call for later
 // import { getClasses as fetchClasses } from "../../api/classesApi";
 
@@ -56,16 +57,17 @@ const HomePage: React.FC = () => {
       <div className="w-full max-w-6xl space-y-4">
         <HomePageHeader />
         <SearchBar />
-        <div className="flex justify-center">
-          <ActionBar />
-        </div>
-        <div className="flex justify-center">
+        <ActionBar />
+      </div>
+      <div className="w-full max-w-6xl space-y-4">
+        <div className="flex justify-center mt-6">
           <ClassesBar
             classes={classList}
             selectedId={selectedId}
             onSelect={(id) => setSelectedId(id)}
           />
         </div>
+        <QuickView />
       </div>
     </div>
   );
