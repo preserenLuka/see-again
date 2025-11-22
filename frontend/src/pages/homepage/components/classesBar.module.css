@@ -1,0 +1,58 @@
+/* Horizontal scrollable list of pill buttons */
+.container {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.5rem 0.25rem;
+  overflow-x: auto;
+  align-items: center;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reset default button visuals in a predictable way */
+.pill {
+  flex: 0 0 auto;
+  border: 2px solid #222;
+  background: #fff;
+  color: #111;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+}
+
+/* Active / selected pill */
+.active {
+  background: #111;
+  color: #fff;
+}
+
+/* Accessible focus styling — only show when using keyboard */
+.pill:focus {
+  outline: none;
+}
+.pill:focus-visible {
+  box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.35);
+  border-color: #159ce4;
+}
+
+/* Small screens: reduce padding slightly */
+@media (max-width: 420px) {
+  .pill {
+    padding: 0.35rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Hide native scrollbar in WebKit but keep scrolling usable */
+.container::-webkit-scrollbar {
+  height: 8px;
+}
+.container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+}
