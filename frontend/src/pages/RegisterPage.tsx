@@ -1,115 +1,88 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { createUser } from "/"
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import styles from './auth.module.css';
+import { createUser } from "../api/userApi.ts"
 
-type RegisterFormInputs = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-};
+type RegisterFormData = {
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+}
 
 const RegisterPage: React.FC = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<RegisterFormInputs>();
+  const { register, handleSubmit, formState: { errors } } = useForm<RegisterFormData>();
+  const { register: registerUser } = useAuth();
+  const navigate = useNavigate();
 
-  const onSubmit = (data: RegisterFormInputs) => {
-    console.log("Form data:", data);
-    createUser(data)
+  const onSubmit = async (data: RegisterFormData) => {
+    try {
+      const response = await createUser(data);
 
-    // Example API call:
-    // const [response, error] = await UserAPI.register(data);
+      console.log("User created:", response.data);
+
+      registerUser(data.email, data.firstName, data.lastName);
+
+      navigate("/");
+    } catch (error: any) {
+      console.error("Registration error:", error);
+      alert(error.response?.data?.message || "Failed to create user");
+    }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-8 rounded-xl shadow-md w-96 space-y-4"
-      >
-        <h1 className="text-2xl font-semibold text-center">Register</h1>
+    <div className={styles.container}>
+      <div className={styles.formWrapper}>
+        <h2 className={styles.title}>Sign Up</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>First Name</label>
+            <input
+              type="text"
+              className={styles.input}
+              {...register('firstName', { required: 'First name is required' })}
+            />
+            {errors.firstName && <span className={styles.error}>{errors.firstName.message as string}</span>}
+          </div>
 
-        {/* First Name */}
-        <div>
-          <label className="block mb-1">First Name</label>
-          <input
-            className="w-full border p-2 rounded"
-            {...register("firstName", { required: "First name is required" })}
-          />
-          {errors.firstName && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.firstName.message}
-            </p>
-          )}
-        </div>
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>Last Name</label>
+            <input
+              type="text"
+              className={styles.input}
+              {...register('lastName', { required: 'Last name is required' })}
+            />
+            {errors.lastName && <span className={styles.error}>{errors.lastName.message as string}</span>}
+          </div>
 
-        {/* Last Name */}
-        <div>
-          <label className="block mb-1">Last Name</label>
-          <input
-            className="w-full border p-2 rounded"
-            {...register("lastName", { required: "Last name is required" })}
-          />
-          {errors.lastName && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.lastName.message}
-            </p>
-          )}
-        </div>
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>Email</label>
+            <input
+              type="email"
+              className={styles.input}
+              {...register('email', { required: 'Email is required' })}
+            />
+            {errors.email && <span className={styles.error}>{errors.email.message as string}</span>}
+          </div>
 
-        {/* Email */}
-        <div>
-          <label className="block mb-1">Email</label>
-          <input
-            className="w-full border p-2 rounded"
-            type="email"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value:
-                  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
-                message: "Invalid email format",
-              },
-            })}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.email.message}
-            </p>
-          )}
-        </div>
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>Password</label>
+            <input
+              type="password"
+              className={styles.input}
+              {...register('password', { required: 'Password is required', minLength: { value: 6, message: 'Password must be at least 6 characters' } })}
+            />
+            {errors.password && <span className={styles.error}>{errors.password.message as string}</span>}
+          </div>
 
-        {/* Password */}
-        <div>
-          <label className="block mb-1">Password</label>
-          <input
-            className="w-full border p-2 rounded"
-            type="password"
-            {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters",
-              },
-            })}
-          />
-          {errors.password && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.password.message}
-            </p>
-          )}
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
-        >
-          Register
-        </button>
-      </form>
+          <button type="submit" className={styles.button}>Sign Up</button>
+        </form>
+        <p className={styles.linkText}>
+          Already have an account? <Link to="/sign-in" className={styles.link}>Sign In</Link>
+        </p>
+      </div>
     </div>
   );
 };

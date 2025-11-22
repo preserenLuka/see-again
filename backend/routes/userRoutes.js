@@ -4,11 +4,13 @@ import {
   getUsers,
   getUserById,
   deleteUser,
+  logInUser,
 } from "../controllers/userController.js";
 
 const router = express.Router();
 
-router.post("/", createUser);
+router.post("/register", createUser);
+router.post("/login", logInUser);
 router.get("/", getUsers);
 router.get("/:id", getUserById);
 router.delete("/:id", deleteUser);

@@ -15,9 +15,10 @@ export const createUser = async (req, res) => {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    const user = await User.create({ firstName, lastName, email, hashedPassword });
+    const user = await User.create({ firstName, lastName, email, password: hashedPassword });
 
     res.status(201).json({
+        id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
@@ -49,6 +50,7 @@ export const logInUser = async (req, res) => {
     }
 
     res.status(201).json({
+        id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,

@@ -8,6 +8,16 @@ type User = {
 }
 
 export const createUser = (userData: User) => {
-    const response = api.post("users", userData);
+    const response = api.post("users/register", userData);
+    return response;
+}
+
+type userLoginData = {
+    email: string,
+    password: string,
+}
+
+export const loginUser = (userData: userLoginData) => {
+    const response = api.post("users/login", userData);
     return response;
 }
