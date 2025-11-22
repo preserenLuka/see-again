@@ -8,11 +8,15 @@ const lectureSchema = new mongoose.Schema(
       ref: "Class",
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
     date: {
       type: Date,
       required: true,
     },
-    transcript: {
+    content: {
       type: String,
       required: true,
     },
