@@ -14,7 +14,7 @@ const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
   const [isCreating, setIsCreating] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [content, setContent] = useState("")
+  const [content, setContent] = useState("");
   const [topics, setTopics] = useState<string[]>([]);
 
   const handleSave = async () => {
@@ -32,7 +32,7 @@ const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
       setTitle("");
       setDescription("");
       setTopics([]);
-      setContent("")
+      setContent("");
       if (onLectureCreated) {
         onLectureCreated();
       }

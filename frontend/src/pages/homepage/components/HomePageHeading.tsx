@@ -28,9 +28,9 @@ const HomePageHeader: React.FC = () => {
                   logout();
                   navigate("/");
                 }}
-                className="text-red-400 hover:text-red-600 transition"
+                className="text-red-[var(--text-primary)] underline decoration-1"
               >
-                Log out
+                Odjavi se
               </button>
             </>
           )}

@@ -43,8 +43,9 @@ const QuickView: React.FC<QuickViewProps> = ({ classId, lectures }) => {
   }, [lectures, classId]);
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <CreateNewLecture onLectureCreated={loadLectures} classId={classId} />
+    <div className="w-full max-w-3xl mx-auto px-4 py-8">
+      {/*       <CreateNewLecture onLectureCreated={loadLectures} classId={classId} />
+       */}{" "}
       {lectureList.map((item, index) => {
         const dateObj = new Date(item.date);
         const monthYear = dateObj.toLocaleString("en-US", {

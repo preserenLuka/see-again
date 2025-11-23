@@ -36,12 +36,12 @@ const ActionBar: React.FC<ActionBarProps> = ({
       icon: FaMicrophone,
       handler: onRecordLecture,
     },
-    {
+    /*     {
       id: "add",
       label: "Add Class",
       icon: FaPen,
       handler: onAddNotes,
-    },
+    }, */
     {
       id: "custom",
       label: "Customize",

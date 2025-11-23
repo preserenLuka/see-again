@@ -37,16 +37,6 @@
   color: var(--text-primary);
 }
 
-:root[data-theme="blue"] {
-  --bg-primary: #e0f2fe; /* Sky-100 */
-  --text-primary: #0c4a6e; /* Sky-900 */
-  --bg-secondary: #7dd3fc; /* Sky-300 for hover */
-  --text-secondary: #ffffff; /* Text on focus */
-  --border-color: #0ea5e9; /* Sky-500 */
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-}
-
 /* Character Heights (Density/Size) */
 :root[data-char-height="small"] {
   font-size: 16px;
@@ -94,7 +84,6 @@ textarea {
 .max-char-width-content {
   max-width: 75ch;
 }
-
 
 .black-white-style {
   background-color: var(--bg-primary);
