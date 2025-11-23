@@ -73,7 +73,7 @@ const ActionBar: React.FC<ActionBarProps> = ({
                 isActive ? "active" : ""
               }`}
             >
-              <Icon size={24} />
+              <Icon size={24} aria-hidden="true" />
               <span className="text-sm">{action.label}</span>
             </button>
           );

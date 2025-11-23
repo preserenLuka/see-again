@@ -3,6 +3,7 @@ import logoImage from "../../../../public/logo.svg";
 import userIcon from "../../../../public/icon.png";
 import { useAuthStore } from "../../../store/authStore.ts";
 import { useNavigate } from "react-router-dom";
+import Logo from "./Logo";
 
 const HomePageHeader: React.FC = () => {
   const { user, logout } = useAuthStore();
@@ -12,7 +13,7 @@ const HomePageHeader: React.FC = () => {
     <div className="flex justify-between items-center px-6 py-4">
       {/* LEFT SECTION — Logo + text */}
       <div className="flex items-center gap-3">
-        <img src={logoImage} alt="Logo" className="w-50" />
+        <Logo className="text-black dark:text-white" />
       </div>
 
       {/* RIGHT SECTION — Name + Settings + Avatar (or logout) */}
@@ -27,7 +28,7 @@ const HomePageHeader: React.FC = () => {
                   logout();
                   navigate("/");
                 }}
-                className="text-secondary-text hover:text-red-400 transition"
+                className="text-red-400 hover:text-red-600 transition"
               >
                 Log out
               </button>
