@@ -19,17 +19,17 @@
 /* Themes */
 :root[data-theme="light"] {
   --bg-primary: #ffffff;
-  --text-primary: #131313;
+  --text-primary: #000000;
   --bg-secondary: oklch(81.1% 0.111 293.571); /* Violet hover */
   --text-secondary: #ffffff; /* Text on focus (inverted) */
-  --border-color: #8e9093;
+  --border-color: #000000;
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
 :root[data-theme="dark"] {
   --bg-primary: #2e2e2e;
-  --text-primary: #ffffff;
+  --text-primary: #f0efef;
   --bg-secondary: #3f3f46; /* Zinc-700 for hover */
   --text-secondary: #131313; /* Text on focus (inverted) */
   --border-color: #52525b; /* Zinc-600 */
@@ -83,6 +83,10 @@ textarea {
 }
 .max-char-width-content {
   max-width: 75ch;
+}
+
+input::placeholder {
+  color: var(--text-se);
 }
 
 .black-white-style {
