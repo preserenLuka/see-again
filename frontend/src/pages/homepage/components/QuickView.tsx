@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getLectures } from "../../../api/lectureApi";
-import CreateNewLecture from "./createNewLecture";
 import { getWordCount, getReadingMinutes } from "../../../utils/testUtils";
 
 interface QuickViewItem {
@@ -32,8 +31,7 @@ const QuickView: React.FC<QuickViewProps> = ({ classId, lectures }) => {
   useEffect(() => {
     if (lectures && lectures.length > 0) {
       setLectureList(lectures);
-    }
-    else if (classId) {
+    } else if (classId) {
       loadLectures();
     }
   }, [lectures, classId]);
