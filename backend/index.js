@@ -13,7 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5000/api", "see-again.madebyluka.com",],
+    origin: ["http://localhost:5000/api", "https://see-again.madebyluka.com",],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
