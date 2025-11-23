@@ -23,19 +23,19 @@ const ClassPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1 className={styles.title}>My Classes</h1>
+        <h1 className={styles.title}>Moji predmeti</h1>
         <div className={styles.toggleContainer}>
           <button
             className={`${styles.toggleBtn} ${viewMode === 'classes' ? styles.toggleBtnActive : ''}`}
             onClick={() => setViewMode('classes')}
           >
-            Classes
+            Predmeti
           </button>
           <button
             className={`${styles.toggleBtn} ${viewMode === 'topics' ? styles.toggleBtnActive : ''}`}
             onClick={() => setViewMode('topics')}
           >
-            Topics
+            Teme
           </button>
         </div>
       </header>
@@ -44,7 +44,7 @@ const ClassPage: React.FC = () => {
         {/* Add New Card */}
         <div className={`${styles.card} ${styles.addCard}`}>
           <FaPlus className={styles.addIcon} />
-          <span>New Class</span>
+          <span>Dodaj predmet</span>
         </div>
 
         {/* Class Cards */}

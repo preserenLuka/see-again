@@ -24,13 +24,13 @@ const ActionBar: React.FC<ActionBarProps> = ({
   }[] = [
     {
       id: "notes",
-      label: "My Classes",
+      label: "Moji predmeti",
       icon: FaBook,
       handler: onMyNotes,
     },
     {
       id: "record",
-      label: "Record lecture",
+      label: "Posnemi predavanje",
       icon: FaMicrophone,
       handler: onRecordLecture,
     },
@@ -42,7 +42,7 @@ const ActionBar: React.FC<ActionBarProps> = ({
     }, */
     {
       id: "custom",
-      label: "Customize",
+      label: "Prilagodi",
       icon: FaWrench,
       handler: onCustomize,
     },

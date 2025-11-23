@@ -18,8 +18,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchString }) => {
     <div className="w-full max-w-6xl mx-auto flex items-center gap-3 px-4">
       <input
         type="text"
-        className="flex-1 px-6 py-4 black-white-style h-[60px]"
-        placeholder="Search for classes..."
+        className="flex-1 px-6 py-4 black-white-style"
+        placeholder="Vtipkaj in pritisni Enter za iskanje..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         onKeyDown={handleKeyDown}

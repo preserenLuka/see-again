@@ -82,7 +82,7 @@ async function seed() {
     await Lecture.insertMany([
     // MATEMATIKA
     {
-      title: "Kvadratne funkcije – uvod",
+      title: "Kvadratne funkcije",
       class: classes[0]._id,
       description: "Osnovne značilnosti kvadratnih funkcij in njihovih grafov.",
       date: new Date("2024-07-15"),
@@ -90,7 +90,7 @@ async function seed() {
       topics: ["kvadratna funkcija", "graf", "ničle"]
     },
     {
-      title: "Zaporedja in uvod v limite",
+      title: "Zaporedja in limite",
       class: classes[0]._id,
       description: "Intuitiven uvod v zaporedja in obnašanje njihovih vrednosti.",
       date: new Date("2024-08-22"),
@@ -98,7 +98,7 @@ async function seed() {
       topics: ["zaporedja", "limite"]
     },
     {
-      title: "Linearne funkcije – analiza grafa",
+      title: "Linearne funkcije",
       class: classes[0]._id,
       description: "Ponovitev linearnih funkcij in pomen smernega koeficienta.",
       date: new Date("2024-10-01"),
@@ -106,7 +106,7 @@ async function seed() {
       topics: ["linearne funkcije", "graf", "algebra"]
     },
     {
-      title: "Sistemi enačb – reševanje",
+      title: "Sistemi enačb",
       class: classes[0]._id,
       description: "Metode reševanja sistemov dveh enačb z dvema neznankama.",
       date: new Date("2024-10-15"),
@@ -116,7 +116,7 @@ async function seed() {
 
     // SLOVENŠČINA
     {
-      title: "Lirska pesem v modernizmu",
+      title: "Lirska pesem modernizem",
       class: classes[1]._id,
       description: "Značilnosti in razvoj lirske pesmi v modernizmu.",
       date: new Date("2024-10-01"),
@@ -124,7 +124,7 @@ async function seed() {
       topics: ["lirika", "modernizem"]
     },
     {
-      title: "Epika – pripovedni elementi",
+      title: "pripovedni elementi",
       class: classes[1]._id,
       description: "Pregled ključnih prvin epskega besedila.",
       date: new Date("2024-11-10"),
@@ -132,7 +132,7 @@ async function seed() {
       topics: ["epika", "pripovedništvo"]
     },
     {
-      title: "Slovenski jezik – sklanjatev samostalnikov",
+      title: "sklanjatev samostalnikov",
       class: classes[1]._id,
       description: "Pregled sklanjatvenih vzorcev v slovenščini.",
       date: new Date("2024-12-18"),
@@ -142,7 +142,7 @@ async function seed() {
 
     // FIZIKA
     {
-      title: "Newtonovi zakoni – ponovitev in uporaba",
+      title: "Newtonovi zakoni",
       class: classes[2]._id,
       description: "Pregled osnov mehanike in treh Newtonovih zakonov.",
       date: new Date("2024-10-05"),
@@ -158,7 +158,7 @@ async function seed() {
       topics: ["energija", "mehanika"]
     },
     {
-      title: "Valovanje – osnovni pojmi",
+      title: "Valovanje",
       class: classes[2]._id,
       description: "Uvod v mehansko in elektromagnetno valovanje.",
       date: new Date("2024-11-25"),
@@ -184,7 +184,7 @@ async function seed() {
       topics: ["podnebje", "geografija"]
     },
     {
-      title: "Geografske karte – branje in raba",
+      title: "Geografske karte",
       class: classes[3]._id,
       description: "Kako beremo karto in uporabljamo zemljevidne projekcije.",
       date: new Date("2024-11-12"),
@@ -194,7 +194,7 @@ async function seed() {
 
     // RAČUNALNIŠTVO
     {
-      title: "Osnove programiranja – spremenljivke",
+      title: "Osnove programiranja",
       class: classes[4]._id,
       description: "Uvod v temeljne strukture programiranja.",
       date: new Date("2024-09-18"),
@@ -202,7 +202,7 @@ async function seed() {
       topics: ["programiranje", "osnove"]
     },
     {
-      title: "Algoritmi – miselni postopki",
+      title: "Algoritmi",
       class: classes[4]._id,
       description: "Razumevanje koncepta algoritma in logičnega razmišljanja.",
       date: new Date("2024-09-25"),
@@ -210,7 +210,7 @@ async function seed() {
       topics: ["algoritmi", "logika"]
     },
     {
-      title: "Spletne tehnologije – HTML & CSS",
+      title: "Spletne tehnologije",
       class: classes[4]._id,
       description: "Osnovni gradniki spletnih strani.",
       date: new Date("2024-10-05"),
@@ -220,7 +220,7 @@ async function seed() {
 
     // ZGODOVINA
     {
-      title: "Stari Egipt – družba in kultura",
+      title: "Stari Egipt",
       class: classes[5]._id,
       description: "Civilizacija ob Nilu skozi ključne zgodovinske faze.",
       date: new Date("2024-09-10"),
@@ -228,7 +228,7 @@ async function seed() {
       topics: ["egipt", "civilizacije"]
     },
     {
-      title: "Grčija – rojstno mesto demokracije",
+      title: "Grčija",
       class: classes[5]._id,
       description: "Pregled političnega razvoja stare Grčije.",
       date: new Date("2024-09-20"),
@@ -236,7 +236,7 @@ async function seed() {
       topics: ["Grčija", "demokracija"]
     },
     {
-      title: "Srednji vek – fevdalizem",
+      title: "Srednji vek",
       class: classes[5]._id,
       description: "Družbena ureditev in politični sistem v srednjem veku.",
       date: new Date("2024-10-01"),
