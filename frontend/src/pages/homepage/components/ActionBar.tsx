@@ -17,25 +17,25 @@ const ActionBar: React.FC<ActionBarProps> = ({
   const actions = [
     {
       id: "notes",
-      label: "Moji zapiski",
+      label: "My notes",
       icon: FaBook,
       onClick: onMyNotes,
     },
     {
       id: "record",
-      label: "Posnemi predavanje",
+      label: "Record lecture",
       icon: FaMicrophone,
       onClick: onRecordLecture,
     },
     {
       id: "add",
-      label: "Dodaj zapiske",
+      label: "Add notes",
       icon: FaPen,
       onClick: onAddNotes,
     },
     {
       id: "custom",
-      label: "Prilagodi",
+      label: "Customize",
       icon: FaWrench,
       onClick: onCustomize,
     },

@@ -10,11 +10,11 @@ export const createLecture = (classData: Class) => {
     const response = api.post("lectures/", classData);
     return response;
 }
-export const getLectures = () => {
-    const response = api.get("lectures/");
+export const getLectures = (classId: string) => {
+    const response = api.get(`lectures/class/${classId}/`);
     return response;
 }
-export const getLectureById = (classId: string) => {
-    const response = api.get(`lectures/${classId}`);
+export const getLectureById = (lectureId: string) => {
+    const response = api.get(`lectures/${lectureId}`);
     return response;
 }

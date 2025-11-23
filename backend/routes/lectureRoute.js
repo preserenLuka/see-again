@@ -9,7 +9,7 @@ import { authMiddleware } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 router.post("/", authMiddleware, createLecture);
-router.get("/", authMiddleware, getLecturesList);
+router.get("/class/:id", authMiddleware, getLecturesList);
 router.get("/:id", authMiddleware, getLectureById);
 
 export default router;

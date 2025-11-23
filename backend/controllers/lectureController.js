@@ -33,8 +33,9 @@ export const createLecture = async (req, res) => {
 
 export const getLecturesList = async (req, res) => {
   try {
-    const lectures = await Lecture.find({}, "description date")
-      .sort({ date: -1 }); // optional: newest first
+    const { classId } = req.params;
+    const lectures = await Lecture.find({class: classId}, "description date")
+      .sort({ date: -1 }); 
 
     res.status(200).json(lectures);
   } catch (err) {
