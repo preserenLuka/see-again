@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaBook, FaMicrophone, FaPen, FaWrench } from "react-icons/fa";
 
 interface ActionBarProps {
@@ -14,30 +14,43 @@ const ActionBar: React.FC<ActionBarProps> = ({
   onAddNotes,
   onCustomize,
 }) => {
+  const [isActive, setActive] = useState<string>("");
   const actions = [
     {
       id: "notes",
       label: "My notes",
       icon: FaBook,
-      onClick: onMyNotes,
+      onClick: () => {
+        setActive("notes");
+        onMyNotes?.();
+      },
     },
     {
       id: "record",
       label: "Record lecture",
       icon: FaMicrophone,
-      onClick: onRecordLecture,
+      onClick: () => {
+        setActive("record");
+        onRecordLecture?.();
+      },
     },
     {
       id: "add",
       label: "Add notes",
       icon: FaPen,
-      onClick: onAddNotes,
+      onClick: () => {
+        setActive("add");
+        onAddNotes?.();
+      },
     },
     {
       id: "custom",
       label: "Customize",
       icon: FaWrench,
-      onClick: onCustomize,
+      onClick: () => {
+        setActive("custom");
+        onCustomize?.();
+      },
     },
   ];
 
@@ -50,7 +63,9 @@ const ActionBar: React.FC<ActionBarProps> = ({
             <button
               key={action.id}
               onClick={action.onClick}
-              className="flex-1 flex items-center justify-center gap-2 px-6 py-6 rounded-lg border-2 border-border bg-primary-bg text-primary-text font-medium focus:outline-none hover:bg-primary-text hover:text-primary-bg hover:border-blue-400 focus-visible:bg-stone-900 focus-visible:text-slate-100 focus-visible:border-blue-500 focus-visible:ring-4 focus-visible:ring-blue-300 transition-colors"
+              className={`flex-1 flex flex-col items-center justify-center gap-2 px-6 py-6 black-white-style ${
+                isActive === action.id ? "active" : ""
+              }`}
             >
               <Icon size={24} />
               <span className="text-sm">{action.label}</span>

@@ -95,7 +95,17 @@ textarea {
 .black-white-style {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  @apply rounded-lg border-2 border-[var(--border-color)] font-medium focus:outline-none hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-primary)] focus-visible:bg-[var(--text-primary)] focus-visible:text-[var(--text-secondary)] focus-visible:shadow-[0px_0px_6px_6px_var(--bg-secondary)] transition-colors;
+  @apply rounded-lg border-2 border-[var(--border-color)] font-medium 
+    focus:outline-none hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] 
+    hover:border-[var(--text-primary)] focus-visible:bg-[var(--text-primary)] 
+    focus-visible:text-[var(--text-secondary)] 
+    focus-visible:shadow-[0px_0px_6px_6px_var(--bg-secondary)] 
+    transition-colors;
+}
+
+/* 🚀 Active state */
+.black-white-style.active {
+  @apply bg-[var(--text-primary)] text-[var(--bg-primary)] border-[var(--text-primary)] shadow-[0px_0px_6px_6px_var(--bg-secondary)];
 }
 
 @keyframes sound-wave {
