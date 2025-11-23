@@ -51,7 +51,7 @@ const ClassesBar: React.FC<Props> = ({ classes, selectedId, onSelect }) => {
             ref={(el) => {
               pillRefs.current[idx] = el;
             }}
-            className={`${base} ${isSelected ? active : normal}`}
+            className={`flex-shrink-0 px-4 py-2 black-white-style`}
             aria-pressed={isSelected}
             onClick={() => onSelect?.(c.id)}
             onFocus={() => handleFocus(idx)}
