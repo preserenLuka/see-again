@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { loginUser } from "../api/userApi";
 import { useAuthStore } from "../store/authStore";
+import logoImage from "../../public/logo.svg";
 
 type LoginFormData = {
   email: string;
@@ -16,6 +17,7 @@ const LoginPage: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormData>();
+
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -23,7 +25,7 @@ const LoginPage: React.FC = () => {
     try {
       const response = await loginUser(data);
 
-      console.log("User loged in:", response.data);
+      console.log("User logged in:", response.data);
 
       useAuthStore.setState({
         user: response.data,
@@ -32,17 +34,27 @@ const LoginPage: React.FC = () => {
       login(data.email);
       navigate("/");
     } catch (error: any) {
-      console.error("Registration error:", error);
-      alert(error.response?.data?.message || "Failed to create user");
+      console.error("Login error:", error);
+      alert(error.response?.data?.message || "Failed to sign in");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--bg-secondary)]">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--bg-secondary)]">
+
+      {/* Logo */}
+      <img
+        src={logoImage}
+        alt="No pupil left behind logo"
+        className="h-12 w-auto mb-6"
+      />
+
+      {/* White card */}
       <div className="bg-[var(--bg-primary)] p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-semibold mb-6 text-center text-[var(--text-primary)]">
           Sign In
         </h2>
+
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium text-[var(--text-primary)] opacity-80">
@@ -78,6 +90,7 @@ const LoginPage: React.FC = () => {
             Sign In
           </button>
         </form>
+
         <p className="text-center mt-4 text-sm text-[var(--text-primary)] opacity-70">
           Don't have an account?{" "}
           <Link
