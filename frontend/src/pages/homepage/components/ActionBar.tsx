@@ -8,49 +8,45 @@ interface ActionBarProps {
   onCustomize?: () => void;
 }
 
+type ActionId = "notes" | "record" | "add" | "custom";
+
 const ActionBar: React.FC<ActionBarProps> = ({
   onMyNotes,
   onRecordLecture,
   onAddNotes,
   onCustomize,
 }) => {
-  const [isActive, setActive] = useState<string>("");
-  const actions = [
+  const [activeId, setActiveId] = useState<ActionId | "">("");
+
+  const actions: {
+    id: ActionId;
+    label: string;
+    icon: React.ComponentType<{ size?: number }>;
+    handler?: () => void;
+  }[] = [
     {
       id: "notes",
       label: "My notes",
       icon: FaBook,
-      onClick: () => {
-        setActive("notes");
-        onMyNotes?.();
-      },
+      handler: onMyNotes,
     },
     {
       id: "record",
       label: "Record lecture",
       icon: FaMicrophone,
-      onClick: () => {
-        setActive("record");
-        onRecordLecture?.();
-      },
+      handler: onRecordLecture,
     },
     {
       id: "add",
       label: "Add notes",
       icon: FaPen,
-      onClick: () => {
-        setActive("add");
-        onAddNotes?.();
-      },
+      handler: onAddNotes,
     },
     {
       id: "custom",
       label: "Customize",
       icon: FaWrench,
-      onClick: () => {
-        setActive("custom");
-        onCustomize?.();
-      },
+      handler: onCustomize,
     },
   ];
 
@@ -59,12 +55,22 @@ const ActionBar: React.FC<ActionBarProps> = ({
       <div className="w-full max-w-6xl mx-auto flex gap-3 px-4">
         {actions.map((action) => {
           const Icon = action.icon;
+          const isActive = activeId === action.id;
+
           return (
             <button
               key={action.id}
-              onClick={action.onClick}
+              type="button"
+              onClick={() => {
+                setActiveId(action.id);
+                action.handler?.();
+              }}
+              onFocus={() => {
+                setActiveId("");
+              }}
+              aria-pressed={isActive}
               className={`flex-1 flex flex-col items-center justify-center gap-2 px-6 py-6 black-white-style ${
-                isActive === action.id ? "active" : ""
+                isActive ? "active" : ""
               }`}
             >
               <Icon size={24} />
