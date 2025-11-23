@@ -33,9 +33,8 @@ const LoginPage: React.FC = () => {
 
       login(data.email);
       navigate("/");
-    } catch (error: any) {
+    } catch (error) {
       console.error("Login error:", error);
-      alert(error.response?.data?.message || "Failed to sign in");
     }
   };
 

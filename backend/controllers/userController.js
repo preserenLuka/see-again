@@ -9,7 +9,6 @@ export const createUser = async (req, res) => {
     const doesUserExist = await User.findOne({ email });
 
     if (doesUserExist) {
-        console.log("user Obstaja")
         return res.status(404).json({ message: "Already exists!" });
     }
     const saltRounds = 10;
@@ -49,14 +48,12 @@ export const logInUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-        console.log("user ne Obstaja")
         return res.status(404).json({ message: "Doesnt exists!" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      console.log("Wrong password");
       return res.status(401).json({ message: "Invalid credentials" });
     }
 

@@ -42,9 +42,7 @@ export const getClassById = async (req, res) => {
 
 export const getAllClasses = async (req, res) => {
   try {
-    console.log(req.params.id);
     const classes = await Class.find({ user: req.params.id });
-
     res.status(200).json(classes);
   } catch (err) {
     res.status(400).json({

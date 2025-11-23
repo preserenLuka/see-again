@@ -38,7 +38,6 @@ export const getLecturesList = async (req, res) => {
 
     const lectures = await Lecture.find({class: classId})
       .sort({ date: -1 }); 
-    console.log(lectures);
     res.status(200).json(lectures);
   } catch (err) {
     res.status(400).json({
@@ -72,25 +71,29 @@ export const searchLecture = async (req, res) => {
     const userId = req.params.id;
     const searchString = req.body.searchString;
 
-    // 1. Find user's classes
     const classes = await Class.find(
       { user: userId },
-      { _id: 1 }     // only return _id
+      { _id: 1 }
     );
 
     const classIds = classes.map((c) => c._id);
 
-    const sample = await Lecture.findOne();
+    const TitleLectures = await Lecture.find({
+      class: { $in: classIds },
+      title: { $regex: searchString, $options: "i" }
+    });
 
-    // 2. Find matching lectures
-    const lectures = await Lecture.find({
+    if (TitleLectures.length > 0) {
+      return res.json({ lectures: TitleLectures });
+    }
+
+    const tagLectures = await Lecture.find({
       class: { $in: classIds },
       topics: { $regex: searchString, $options: "i" }
     });
 
-    return res.json({ lectures });
+    return res.json({ lectures: tagLectures });
   } catch (err) {
-    console.error(err);
     res.status(500).json({ error: "Server error" });
   }
 };
