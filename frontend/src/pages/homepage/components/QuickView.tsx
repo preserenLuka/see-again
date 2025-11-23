@@ -10,10 +10,10 @@ interface QuickViewItem {
   tags: string[];
 }
 type QuickViewProps = {
-  classId: string
-}
+  classId: string;
+};
 
-const QuickView: React.FC<QuickViewProps> = ({classId}) => {
+const QuickView: React.FC<QuickViewProps> = ({ classId }) => {
   const [lectureList, setLectureList] = useState<QuickViewItem[]>([]);
   const getLectureList = async () => {
     try {
@@ -58,23 +58,23 @@ const QuickView: React.FC<QuickViewProps> = ({classId}) => {
         return (
           <div key={item.id} className="mb-8">
             {showHeader && (
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8 first:mt-0">
+              <h2 className="text-3xl font-bold text-primary-text mb-6 mt-8 first:mt-0">
                 {monthYear}
               </h2>
             )}
 
             <div className="mb-6 last:mb-0">
-              <button className="inline-block rounded-lg border-2 p-2 pl-8 pr-8 border-gray-300 bg-white text-gray-900 font-medium focus:outline-none hover:bg-stone-900 hover:text-slate-100 hover:border-blue-400 focus-visible:bg-stone-900 focus-visible:text-slate-100 focus-visible:border-blue-500 focus-visible:ring-4 focus-visible:ring-blue-300 transition-colors ">
+              <button className="inline-block rounded-lg border-2 p-2 pl-8 pr-8 border-border bg-primary-bg text-primary-text font-medium focus:outline-none hover:bg-stone-900 hover:text-slate-100 hover:border-blue-400 focus-visible:bg-stone-900 focus-visible:text-slate-100 focus-visible:border-blue-500 focus-visible:ring-4 focus-visible:ring-blue-300 transition-colors ">
                 {item.title}
               </button>
-              <p className="max-char-width text-gray-800 text-lg mb-3 mt-3 leading-relaxed">
+              <p className="max-char-width text-primary-text text-lg mb-3 mt-3 leading-relaxed">
                 {item.description}
               </p>
-              <div className="flex flex-wrap gap-6 text-gray-600 font-medium">
+              <div className="flex flex-wrap gap-6 text-secondary-text font-medium">
                 <span className="py-0.5">{displayDate}</span>
                 {item.tags.map((tag, i) => (
                   <span
-                    className="border border-gray-300 rounded-lg px-2 py-0.5"
+                    className="border border-border rounded-lg px-2 py-0.5"
                     key={i}
                   >
                     {tag}

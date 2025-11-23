@@ -8,6 +8,7 @@ import AddClass from "./components/AddClass";
 import { getClasses } from "../../api/classesApi";
 import { useAuthStore } from "../../store/authStore";
 import Settings from "./components/Settings";
+import RecordNote from "./components/RecordNote";
 
 // API not ready yet — keep call for later
 // import { getClasses as fetchClasses } from "../../api/classesApi";
@@ -51,9 +52,12 @@ const HomePage: React.FC = () => {
               onSelect={(id) => setSelectedId(id)}
             />
           </div>
-          <QuickView 
-            classId={selectedId}
-          />
+          <QuickView classId={selectedId} />
+        </div>
+      )}
+      {view === "record" && (
+        <div className="space-y-4 p-6">
+          <RecordNote />
         </div>
       )}
       {view === "add" && (

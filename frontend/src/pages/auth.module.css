@@ -3,11 +3,11 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5;
+  background-color: var(--bg-secondary);
 }
 
 .formWrapper {
-  background: white;
+  background: var(--bg-primary);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -20,7 +20,7 @@
   font-weight: 600;
   margin-bottom: 1.5rem;
   text-align: center;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .form {
@@ -38,18 +38,18 @@
 .label {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 .input {
   padding: 0.75rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1rem;
   outline: none;
   transition: border-color 0.2s;
-  color: #333; /* Fix for invisible text */
-  background-color: #fff;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
 }
 
 .input:focus {
@@ -82,7 +82,7 @@
   text-align: center;
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .link {
