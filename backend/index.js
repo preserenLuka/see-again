@@ -6,6 +6,7 @@ import userRoutes from "./routes/userRoutes.js";
 import classRoutes from "./routes/classRoutes.js";
 import lectureRoutes from "./routes/lectureRoute.js";
 import cookieParser from "cookie-parser";
+import seed from "./seed.js"
 
 dotenv.config(); // load .env into process.env
 
@@ -38,4 +39,8 @@ app.get("/", (req, res) => {
 // Use PORT from env, fallback to 5000
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  seed();
+});
