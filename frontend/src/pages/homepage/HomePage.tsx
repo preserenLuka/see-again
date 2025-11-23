@@ -9,6 +9,7 @@ import { getClasses } from "../../api/classesApi";
 import { useAuthStore } from "../../store/authStore";
 import Settings from "./components/Settings";
 import RecordNote from "./components/RecordNote";
+import { searchLectures } from "../../api/lectureApi";
 
 type Class = {
   id: string;
@@ -19,6 +20,7 @@ type ViewMode = "none" | "notes" | "record" | "add" | "custom";
 
 const HomePage: React.FC = () => {
   const [classList, setClassList] = useState<Class[]>([]);
+  const [lectureList, setLectureList] = useState([])
   const [selectedId, setSelectedId] = useState<string>("");
   const [view, setView] = useState<ViewMode>("none");
   const { user } = useAuthStore();
@@ -55,7 +57,16 @@ const HomePage: React.FC = () => {
     <div className="min-h-screen bg-primary-bg text-primary-text flex flex-col items-center justify-start pt-8 px-4">
       <div className="w-full max-w-6xl space-y-4">
         <HomePageHeader />
-        <SearchBar />
+        <SearchBar
+          searchString={async (query: string) => {
+            if (!user?.id) return;
+
+            const response = await searchLectures(query, user.id);
+
+            setView("notes");
+            setLectureList(response.data.lectures); // <-- FIXED
+          }}
+        />
         <ActionBar
           onMyNotes={async () => {
             if (!user?.id) return;
@@ -118,7 +129,7 @@ const HomePage: React.FC = () => {
             aria-label="Quick view for selected class"
             className="outline-none"
           >
-            <QuickView classId={selectedId} />
+            <QuickView classId={selectedId} lectures={lectureList}/>
           </div>
         </div>
       )}

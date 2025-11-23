@@ -1,5 +1,5 @@
 import { Lecture } from "../models/Lecture.js";
-
+import { Class } from "../models/Class.js";
 
 export const createLecture = async (req, res) => {
   try {
@@ -64,5 +64,33 @@ export const getLectureById = async (req, res) => {
       message: "Failed to fetch lecture",
       error: err.message,
     });
+  }
+};
+
+export const searchLecture = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const searchString = req.body.searchString;
+
+    // 1. Find user's classes
+    const classes = await Class.find(
+      { user: userId },
+      { _id: 1 }     // only return _id
+    );
+
+    const classIds = classes.map((c) => c._id);
+
+    const sample = await Lecture.findOne();
+
+    // 2. Find matching lectures
+    const lectures = await Lecture.find({
+      class: { $in: classIds },
+      topics: { $regex: searchString, $options: "i" }
+    });
+
+    return res.json({ lectures });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
   }
 };

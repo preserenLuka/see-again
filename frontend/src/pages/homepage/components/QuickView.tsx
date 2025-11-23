@@ -14,11 +14,15 @@ interface QuickViewItem {
 }
 type QuickViewProps = {
   classId: string;
+  lectures?: QuickViewItem[] | null;
 };
 
-const QuickView: React.FC<QuickViewProps> = ({ classId }) => {
+const QuickView: React.FC<QuickViewProps> = ({ classId, lectures }) => {
   const [lectureList, setLectureList] = useState<QuickViewItem[]>([]);
   const [openLectureId, setOpenLectureId] = useState<string | null>(null);
+
+
+  // Load from API when class changes (only if no search results)
   const loadLectures = async () => {
     try {
       const response = await getLectures(classId);
@@ -28,14 +32,17 @@ const QuickView: React.FC<QuickViewProps> = ({ classId }) => {
     }
   };
 
-  useEffect(() => {
-  console.log("lectureList updated:", lectureList);
-}, [lectureList]);
-  useEffect(() => {
-    if (classId) {
+    useEffect(() => {
+    // If search results exist → use them
+    if (lectures && lectures.length > 0) {
+      setLectureList(lectures);
+    } 
+    // If search results are empty → fetch normally
+    else if (classId) {
       loadLectures();
     }
-  }, [classId]);
+  }, [lectures, classId]);
+
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
