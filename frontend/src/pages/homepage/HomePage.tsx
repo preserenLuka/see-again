@@ -139,7 +139,7 @@ const HomePage: React.FC = () => {
           ref={recordSectionRef}
           tabIndex={-1}
           role="region"
-          aria-label="Record lecture section"
+          aria-label="Posnemi predavanje"
           className="w-full max-w-6xl space-y-4 p-6 outline-none"
         >
           <RecordNote />
@@ -151,7 +151,7 @@ const HomePage: React.FC = () => {
           ref={addSectionRef}
           tabIndex={-1}
           role="region"
-          aria-label="Add class section"
+          aria-label="Dodaj predmet"
           className="w-full max-w-6xl space-y-4 p-6 outline-none"
         >
           <AddClass />
@@ -163,7 +163,7 @@ const HomePage: React.FC = () => {
           ref={customSectionRef}
           tabIndex={-1}
           role="region"
-          aria-label="Settings section"
+          aria-label="Prilagoditve"
           className="w-full max-w-3xl space-y-4 p-6 outline-none"
         >
           <Settings />

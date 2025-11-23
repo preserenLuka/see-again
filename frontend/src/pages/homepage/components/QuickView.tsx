@@ -100,7 +100,7 @@ const QuickView: React.FC<QuickViewProps> = ({ classId, lectures }) => {
                   {getReadingMinutes(item.content)} min
                 </span>
                 <span className="py-2 px-1">
-                  {getWordCount(item.content)} words
+                  {getWordCount(item.content)} besed
                 </span>
               </div>
             </div>

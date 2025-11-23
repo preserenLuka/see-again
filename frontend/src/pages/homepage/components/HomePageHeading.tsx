@@ -1,5 +1,4 @@
 import React from "react";
-import logoImage from "../../../../public/logo.svg";
 import userIcon from "../../../../public/icon.png";
 import { useAuthStore } from "../../../store/authStore.ts";
 import { useNavigate } from "react-router-dom";

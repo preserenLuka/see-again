@@ -50,7 +50,7 @@ const RecordNote: React.FC = () => {
           isRecording ? "text-red-500 animate-pulse" : "text-secondary-text"
         }`}
       >
-        {isRecording ? "Recording..." : "Click microphone to start"}
+        {isRecording ? "Snemanje v teku..." : "Klikni mikrofon za začetek snemanja..."}
       </p>
     </div>
   );
