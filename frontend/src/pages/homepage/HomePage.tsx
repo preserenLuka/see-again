@@ -23,13 +23,15 @@ const HomePage: React.FC = () => {
   const [view, setView] = useState<ViewMode>("none");
   const { user } = useAuthStore();
 
-  // 🔹 Refs for sections we want to focus
   const notesSectionRef = useRef<HTMLDivElement | null>(null);
   const recordSectionRef = useRef<HTMLDivElement | null>(null);
   const addSectionRef = useRef<HTMLDivElement | null>(null);
   const customSectionRef = useRef<HTMLDivElement | null>(null);
 
-  // 🔹 When `view` changes, move focus into the corresponding section
+  // ⬇️ New: ref for QuickView region
+  const quickViewRef = useRef<HTMLDivElement | null>(null);
+
+  // When view changes → focus corresponding region
   useEffect(() => {
     if (view === "notes" && notesSectionRef.current) {
       notesSectionRef.current.focus();
@@ -42,6 +44,13 @@ const HomePage: React.FC = () => {
     }
   }, [view]);
 
+  // ⬇️ When class changes → move focus to QuickView
+  useEffect(() => {
+    if (selectedId && quickViewRef.current) {
+      quickViewRef.current.focus({ preventScroll: true } as FocusOptions);
+    }
+  }, [selectedId]);
+
   return (
     <div className="min-h-screen bg-primary-bg text-primary-text flex flex-col items-center justify-start pt-8 px-4">
       <div className="w-full max-w-6xl space-y-4">
@@ -52,11 +61,37 @@ const HomePage: React.FC = () => {
             if (!user?.id) return;
             const response = await getClasses(user.id);
             setClassList(response.data);
-            setView("notes");
+
+            // 🔁 If we're already in "notes", just re-focus the section
+            if (view === "notes") {
+              if (notesSectionRef.current) {
+                notesSectionRef.current.focus();
+              }
+            } else {
+              setView("notes");
+            }
           }}
-          onRecordLecture={() => setView("record")}
-          onAddNotes={() => setView("add")}
-          onCustomize={() => setView("custom")}
+          onRecordLecture={() => {
+            if (view === "record") {
+              recordSectionRef.current?.focus();
+            } else {
+              setView("record");
+            }
+          }}
+          onAddNotes={() => {
+            if (view === "add") {
+              addSectionRef.current?.focus();
+            } else {
+              setView("add");
+            }
+          }}
+          onCustomize={() => {
+            if (view === "custom") {
+              customSectionRef.current?.focus();
+            } else {
+              setView("custom");
+            }
+          }}
         />
       </div>
 
@@ -75,7 +110,16 @@ const HomePage: React.FC = () => {
               onSelect={(id) => setSelectedId(id)}
             />
           </div>
-          <QuickView classId={selectedId} />
+
+          <div
+            ref={quickViewRef}
+            tabIndex={-1}
+            role="region"
+            aria-label="Quick view for selected class"
+            className="outline-none"
+          >
+            <QuickView classId={selectedId} />
+          </div>
         </div>
       )}
 
