@@ -18,6 +18,10 @@ export const getLectures = (classId: string) => {
     return response;
 }
 export const getLectureById = (lectureId: string) => {
-    const response = api.get(`lectures/${lectureId}`);
+    const response = api.get(`lectures/${lectureId}/`);
+    return response;
+}
+export const searchLectures = (searchString: string, userId: string) => {
+    const response = api.post(`lectures/search/lectures/${userId}/`, { searchString });
     return response;
 }

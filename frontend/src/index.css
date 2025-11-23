@@ -91,6 +91,10 @@ textarea {
 .max-char-width {
   max-width: 45ch;
 }
+.max-char-width-content {
+  max-width: 75ch;
+}
+
 
 .black-white-style {
   background-color: var(--bg-primary);

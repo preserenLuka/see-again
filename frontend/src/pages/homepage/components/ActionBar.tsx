@@ -26,7 +26,7 @@ const ActionBar: React.FC<ActionBarProps> = ({
   }[] = [
     {
       id: "notes",
-      label: "My notes",
+      label: "My Classes",
       icon: FaBook,
       handler: onMyNotes,
     },
@@ -38,7 +38,7 @@ const ActionBar: React.FC<ActionBarProps> = ({
     },
     {
       id: "add",
-      label: "Add notes",
+      label: "Add Class",
       icon: FaPen,
       handler: onAddNotes,
     },

@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import { FaCommentDots } from "react-icons/fa";
 
-const SearchBar: React.FC = () => {
+type SearchBarProps ={
+  searchString?: (query: string) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({searchString}) => {
   const [searchQuery, setSearchQuery] = useState("");
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      searchString?.(searchQuery);
+    }
+  };
 
   return (
     <div className="w-full max-w-6xl mx-auto flex items-center gap-3 px-4">
@@ -12,6 +22,7 @@ const SearchBar: React.FC = () => {
         placeholder="Search for classes..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <button
         type="button"
