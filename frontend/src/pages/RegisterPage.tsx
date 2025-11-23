@@ -32,9 +32,8 @@ const RegisterPage: React.FC = () => {
       });
 
       navigate("/");
-    } catch (error: any) {
+    } catch (error) {
       console.error("Registration error:", error);
-      alert(error.response?.data?.message || "Failed to create user");
     }
   };
 

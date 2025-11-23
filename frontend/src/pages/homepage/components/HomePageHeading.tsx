@@ -1,5 +1,6 @@
 import React from "react";
 import logoImage from "../../../../public/logo.svg";
+import userIcon from "../../../../public/icon.png";
 import { useAuthStore } from "../../../store/authStore.ts";
 import { useNavigate } from "react-router-dom";
 
@@ -36,7 +37,7 @@ const HomePageHeader: React.FC = () => {
 
         {/* Avatar (placeholder if none) */}
         <img
-          src={"https://placehold.co/40x40"}
+          src={userIcon}
           alt="avatar"
           className="w-10 h-10 rounded-full object-cover"
         />
