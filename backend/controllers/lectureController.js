@@ -72,23 +72,28 @@ export const searchLecture = async (req, res) => {
     const userId = req.params.id;
     const searchString = req.body.searchString;
 
-    // 1. Find user's classes
     const classes = await Class.find(
       { user: userId },
-      { _id: 1 }     // only return _id
+      { _id: 1 }
     );
 
     const classIds = classes.map((c) => c._id);
 
-    const sample = await Lecture.findOne();
+    const TitleLectures = await Lecture.find({
+      class: { $in: classIds },
+      title: { $regex: searchString, $options: "i" }
+    });
 
-    // 2. Find matching lectures
-    const lectures = await Lecture.find({
+    if (TitleLectures){
+      return res.json({ TitleLectures });
+    }
+
+    const tagLectures = await Lecture.find({
       class: { $in: classIds },
       topics: { $regex: searchString, $options: "i" }
     });
 
-    return res.json({ lectures });
+    return res.json({ tagLectures });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
