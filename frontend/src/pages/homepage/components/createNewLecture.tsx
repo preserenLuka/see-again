@@ -4,7 +4,7 @@ import TagInput from "./TagInput";
 
 interface CreateNewLectureProps {
   onLectureCreated?: () => void;
-  classId: string
+  classId: string;
 }
 
 const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
@@ -53,9 +53,9 @@ const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
   }
 
   return (
-    <div className="mb-8 p-6 bg-white rounded-xl shadow-sm border border-gray-200">
+    <div className="mb-8 p-6 bg-primary-bg rounded-xl shadow-sm border border-border">
       <div className="mb-4">
-        <label className="block text-sm font-[650] text-gray-700 mb-1">
+        <label className="block text-sm font-[650] text-primary-text mb-1">
           Title
         </label>
         <input
@@ -68,7 +68,7 @@ const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
       </div>
       <TagInput tags={topics} setTags={setTopics} />
       <div className="mb-4">
-        <label className="block text-sm text-gray-700 font-semibold">
+        <label className="block text-sm text-primary-text font-semibold">
           Description
         </label>
         <textarea

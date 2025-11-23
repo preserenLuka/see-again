@@ -41,8 +41,8 @@ const ClassesBar: React.FC<Props> = ({ classes, selectedId, onSelect }) => {
         const base =
           "flex-shrink-0 px-4 py-2 rounded-full border-2 text-sm font-medium focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300 transition-colors";
         const normal =
-          "border-gray-300 bg-white text-gray-900 hover:bg-gray-100";
-        const active = "bg-gray-900 text-white border-gray-900";
+          "border-border bg-primary-bg text-primary-text hover:bg-secondary-bg";
+        const active = "bg-primary-text text-primary-bg border-primary-text";
 
         return (
           <button

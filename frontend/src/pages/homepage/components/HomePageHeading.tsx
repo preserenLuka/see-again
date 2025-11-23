@@ -26,7 +26,7 @@ const HomePageHeader: React.FC = () => {
                   logout();
                   navigate("/");
                 }}
-                className="text-gray-400 hover:text-red-400 transition"
+                className="text-secondary-text hover:text-red-400 transition"
               >
                 Log out
               </button>

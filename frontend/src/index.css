@@ -19,30 +19,30 @@
 /* Themes */
 :root[data-theme="light"] {
   --bg-primary: #ffffff;
-  --text-primary: #213547;
-  --bg-secondary: #f9fafb; /* gray-50 */
-  --text-secondary: #4b5563; /* gray-600 */
-  --border-color: #d1d5db; /* gray-300 */
+  --text-primary: #131313;
+  --bg-secondary: oklch(81.1% 0.111 293.571); /* Violet hover */
+  --text-secondary: #ffffff; /* Text on focus (inverted) */
+  --border-color: #8e9093;
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
 :root[data-theme="dark"] {
-  --bg-primary: #242424;
-  --text-primary: rgba(255, 255, 255, 0.87);
-  --bg-secondary: #1a1a1a;
-  --text-secondary: #9ca3af;
-  --border-color: #4b5563;
+  --bg-primary: #2e2e2e;
+  --text-primary: #ffffff;
+  --bg-secondary: #3f3f46; /* Zinc-700 for hover */
+  --text-secondary: #131313; /* Text on focus (inverted) */
+  --border-color: #52525b; /* Zinc-600 */
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
 :root[data-theme="blue"] {
-  --bg-primary: #e0f2fe; /* Light blue */
-  --text-primary: #0c4a6e; /* Dark blue */
-  --bg-secondary: #bae6fd;
-  --text-secondary: #0369a1;
-  --border-color: #7dd3fc;
+  --bg-primary: #e0f2fe; /* Sky-100 */
+  --text-primary: #0c4a6e; /* Sky-900 */
+  --bg-secondary: #7dd3fc; /* Sky-300 for hover */
+  --text-secondary: #ffffff; /* Text on focus */
+  --border-color: #0ea5e9; /* Sky-500 */
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
@@ -67,6 +67,15 @@ body {
   margin: 0;
 }
 
+input,
+select,
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 .error-message {
   @apply text-sm text-red-500 mt-1 font-medium;
 }
@@ -84,5 +93,36 @@ body {
 }
 
 .black-white-style {
-  @apply rounded-lg border-2 border-gray-500 bg-white text-zinc-900 font-medium focus:outline-none hover:bg-violet-300 hover:text-slate-950 hover:border-stone-950 focus-visible:bg-stone-950 focus-visible:text-sky-50 focus-visible:shadow-[0px_0px_6px_6px_rgba(83,_43,_226,_0.4)] transition-colors;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  @apply rounded-lg border-2 border-[var(--border-color)] font-medium focus:outline-none hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-primary)] focus-visible:bg-[var(--text-primary)] focus-visible:text-[var(--text-secondary)] focus-visible:shadow-[0px_0px_6px_6px_var(--bg-secondary)] transition-colors;
+}
+
+@keyframes sound-wave {
+  0%,
+  100% {
+    height: 10px;
+    opacity: 0.5;
+  }
+  50% {
+    height: 40px;
+    opacity: 1;
+  }
+}
+
+.animate-sound-wave {
+  animation: sound-wave 1s ease-in-out infinite;
+}
+
+.animation-delay-100 {
+  animation-delay: 0.1s;
+}
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+.animation-delay-400 {
+  animation-delay: 0.4s;
 }
