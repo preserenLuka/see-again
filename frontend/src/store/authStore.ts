@@ -22,7 +22,8 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   fetchUser: async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/users/me");
+      const url = import.meta.env.VITE_DOMAIN_NAME || "http://localhost:5000/api"
+      const res = await axios.get(`${url}/users/me`);
       set({ user: res.data, loading: false });
     } catch {
       set({ user: null, loading: false });
@@ -30,7 +31,8 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 
   logout: async () => {
-    await axios.post("http://localhost:5000/api/users/logout");
+    const url = import.meta.env.VITE_DOMAIN_NAME || "http://localhost:5000/api"
+    await axios.post(`${url}/users/logout`);
     set({ user: null });
   },
 }));
