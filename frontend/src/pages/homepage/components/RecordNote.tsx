@@ -16,7 +16,7 @@ const RecordNote: React.FC = () => {
         className={`
           relative z-10 p-10 rounded-full border-4 
           transition-all duration-300 ease-in-out transform
-          hover:scale-110 hover:shadow-xl
+          hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-500
           ${
             isRecording
               ? "bg-red-50 border-red-500 text-red-500 shadow-[0_0_20px_rgba(239,68,68,0.4)]"
