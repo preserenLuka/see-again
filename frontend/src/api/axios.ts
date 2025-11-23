@@ -1,10 +1,8 @@
 import axios from "axios";
 
-
-const devUrl = "http://localhost:5000/api";
 // Create axios instance
 const api = axios.create({
-  baseURL: import.meta.env.VITE_DOMAIN_NAME || devUrl,
+  baseURL: "see-again-production.up.railway.app/api",
   withCredentials: true,
 });
 
