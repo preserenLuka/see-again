@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import { FaBook, FaMicrophone, FaPen, FaWrench } from "react-icons/fa";
+import { FaBook, FaMicrophone, FaWrench } from "react-icons/fa";
 
 interface ActionBarProps {
   onMyNotes?: () => void;
   onRecordLecture?: () => void;
-  onAddNotes?: () => void;
   onCustomize?: () => void;
 }
 
-type ActionId = "notes" | "record" | "add" | "custom";
+type ActionId = "notes" | "record" | "custom";
 
 const ActionBar: React.FC<ActionBarProps> = ({
   onMyNotes,
   onRecordLecture,
-  onAddNotes,
   onCustomize,
 }) => {
   const [activeId, setActiveId] = useState<ActionId | "">("");

@@ -89,13 +89,6 @@ const HomePage: React.FC = () => {
               setView("record");
             }
           }}
-          onAddNotes={() => {
-            if (view === "add") {
-              addSectionRef.current?.focus();
-            } else {
-              setView("add");
-            }
-          }}
           onCustomize={() => {
             if (view === "custom") {
               customSectionRef.current?.focus();
