@@ -7,40 +7,37 @@ import classRoutes from "./routes/classRoutes.js";
 import lectureRoutes from "./routes/lectureRoute.js";
 import cookieParser from "cookie-parser";
 
-dotenv.config(); // load .env into process.env
+dotenv.config();
 
 const app = express();
 
+// MUST be first
+app.use(express.json());
+app.use(cookieParser());
+
+// CORRECT CORS CONFIG
 app.use(
   cors({
-    origin: ["http://localhost:5173",               // your local frontend
-      "https://see-again.madebyluka.com",    // your custom domain
-      "https://see-again-production.up.railway.app"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: [
+      "http://localhost:5173",
+      "https://see-again.madebyluka.com"
+    ],
     credentials: true,
   })
 );
-app.use(cookieParser());
 
-// Middleware to parse JSON bodies
-app.use(express.json());
-
-// Connect to MongoDB
 connectDB();
 
 app.use("/api/users", userRoutes);
 app.use("/api/classes", classRoutes);
 app.use("/api/lectures", lectureRoutes);
 
-// Example health route
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// Use PORT from env, fallback to 5000
 const PORT = process.env.PORT || 5000;
 
-
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen(PORT, "0.0.0.0", () =>
+  console.log(`Server running on port ${PORT}`)
+);
