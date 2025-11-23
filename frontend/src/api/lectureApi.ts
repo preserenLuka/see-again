@@ -1,9 +1,12 @@
 import api from "./axios.ts";
 
 type Class = {
-    name: string,
-    studyYear: string,
-    classId: string,
+    title: string;
+    description: string;
+    date: string;
+    topics: string[];
+    classId: string;
+    content: string;
 }
 
 export const createLecture = (classData: Class) => {

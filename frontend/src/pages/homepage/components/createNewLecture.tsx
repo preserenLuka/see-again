@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { createLecture } from "../../../api/lectureApi";
-
-type Class = {
-  name: string;
-  studyYear: string;
-  classId: string;
-};
+import TagInput from "./TagInput";
 
 interface CreateNewLectureProps {
   onLectureCreated?: () => void;
@@ -19,33 +14,31 @@ const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
   const [isCreating, setIsCreating] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [content, setContent] = useState("")
+  const [topics, setTopics] = useState<string[]>([]);
 
-  const handleCreateLecture = async (data: Class) => {
+  const handleSave = async () => {
     try {
-      const response = await createLecture({
-        name: data.name,
-        studyYear: data.studyYear,
+      await createLecture({
+        title: title,
+        date: new Date().toISOString(),
+        description: description,
+        content: content,
         classId: classId,
+        topics: topics,
       });
 
-      console.log("Lecture created:", response.data);
       setIsCreating(false);
       setTitle("");
       setDescription("");
+      setTopics([]);
+      setContent("")
       if (onLectureCreated) {
         onLectureCreated();
       }
     } catch (error) {
       console.error("Error creating lecture:", error);
     }
-  };
-
-  const handleSave = () => {
-    handleCreateLecture({
-      name: title,
-      studyYear: "2025",
-      classId: classId,
-    });
   };
 
   if (!isCreating) {
@@ -73,9 +66,9 @@ const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
           placeholder="Enter lecture title"
         />
       </div>
-
-      <div className="mb-6">
-        <label className="block text-sm text-gray-700 mb-1 font-semibold">
+      <TagInput tags={topics} setTags={setTopics} />
+      <div className="mb-4">
+        <label className="block text-sm text-gray-700 font-semibold">
           Description
         </label>
         <textarea
@@ -85,7 +78,17 @@ const CreateNewLecture: React.FC<CreateNewLectureProps> = ({
           placeholder="Enter lecture description"
         />
       </div>
-
+      <div className="mb-4">
+        <label className="block text-sm text-gray-700 mb-1 font-semibold">
+          Content
+        </label>
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          className="w-full px-4 py-2 min-h-[260px] black-white-style"
+          placeholder="Enter lecture content"
+        />
+      </div>
       <div className="flex justify-end gap-3">
         <button
           onClick={() => setIsCreating(false)}

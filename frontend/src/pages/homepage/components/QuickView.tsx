@@ -7,7 +7,7 @@ interface QuickViewItem {
   title: string;
   description: string;
   date: string;
-  tags: string[];
+  topics: string[];
 }
 type QuickViewProps = {
   classId: string
@@ -18,12 +18,19 @@ const QuickView: React.FC<QuickViewProps> = ({classId}) => {
   const loadLectures = async () => {
     try {
       const response = await getLectures(classId);
+      console.log(response.data);
+      console.log(lectureList);
       setLectureList(response.data);
+      console.log(lectureList);
+
     } catch (err) {
       console.error("Error fetching lectures:", err);
     }
   };
 
+  useEffect(() => {
+  console.log("lectureList updated:", lectureList);
+}, [lectureList]);
   useEffect(() => {
     if (classId) {
       loadLectures();
@@ -74,7 +81,7 @@ const QuickView: React.FC<QuickViewProps> = ({classId}) => {
               </p>
               <div className="flex flex-wrap gap-6 text-gray-600 font-medium">
                 <span className="py-0.5">{displayDate}</span>
-                {item.tags.map((tag, i) => (
+                {item.topics.map((tag, i) => (
                   <span
                     className="border border-gray-300 rounded-lg px-2 py-0.5"
                     key={i}
