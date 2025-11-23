@@ -1,5 +1,4 @@
 import React from "react";
-import logoImage from "../../../../public/logo.svg";
 import userIcon from "../../../../public/icon.png";
 import { useAuthStore } from "../../../store/authStore.ts";
 import { useNavigate } from "react-router-dom";
@@ -28,9 +27,9 @@ const HomePageHeader: React.FC = () => {
                   logout();
                   navigate("/");
                 }}
-                className="text-red-400 hover:text-red-600 transition"
+                className="text-red-[var(--text-primary)] underline decoration-1"
               >
-                Log out
+                Odjavi se
               </button>
             </>
           )}

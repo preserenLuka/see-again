@@ -20,7 +20,7 @@ type ViewMode = "none" | "notes" | "record" | "add" | "custom";
 
 const HomePage: React.FC = () => {
   const [classList, setClassList] = useState<Class[]>([]);
-  const [lectureList, setLectureList] = useState([])
+  const [lectureList, setLectureList] = useState([]);
   const [selectedId, setSelectedId] = useState<string>("");
   const [view, setView] = useState<ViewMode>("none");
   const { user } = useAuthStore();
@@ -55,7 +55,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-primary-bg text-primary-text flex flex-col items-center justify-start pt-8 px-4">
-      <div className="w-full max-w-6xl space-y-4">
+      <div className="w-full max-w-3xl space-y-4">
         <HomePageHeader />
         <SearchBar
           searchString={async (query: string) => {
@@ -129,7 +129,7 @@ const HomePage: React.FC = () => {
             aria-label="Quick view for selected class"
             className="outline-none"
           >
-            <QuickView classId={selectedId} lectures={lectureList}/>
+            <QuickView classId={selectedId} lectures={lectureList} />
           </div>
         </div>
       )}
@@ -139,7 +139,7 @@ const HomePage: React.FC = () => {
           ref={recordSectionRef}
           tabIndex={-1}
           role="region"
-          aria-label="Record lecture section"
+          aria-label="Posnemi predavanje"
           className="w-full max-w-6xl space-y-4 p-6 outline-none"
         >
           <RecordNote />
@@ -151,7 +151,7 @@ const HomePage: React.FC = () => {
           ref={addSectionRef}
           tabIndex={-1}
           role="region"
-          aria-label="Add class section"
+          aria-label="Dodaj predmet"
           className="w-full max-w-6xl space-y-4 p-6 outline-none"
         >
           <AddClass />
@@ -163,8 +163,8 @@ const HomePage: React.FC = () => {
           ref={customSectionRef}
           tabIndex={-1}
           role="region"
-          aria-label="Settings section"
-          className="w-full max-w-6xl space-y-4 p-6 outline-none"
+          aria-label="Prilagoditve"
+          className="w-full max-w-3xl space-y-4 p-6 outline-none"
         >
           <Settings />
         </div>

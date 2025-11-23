@@ -50,12 +50,12 @@ const RegisterPage: React.FC = () => {
       {/* White card */}
       <div className="bg-[var(--bg-primary)] p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-semibold mb-6 text-center text-[var(--text-primary)]">
-          Sign Up
+          Registriraj se
         </h2>
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium text-[var(--text-primary)] opacity-80">
-                First Name
+                Ime
               </label>
               <input
                 type="text"
@@ -73,7 +73,7 @@ const RegisterPage: React.FC = () => {
 
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium text-[var(--text-primary)] opacity-80">
-                Last Name
+                Priimek
               </label>
               <input
                 type="text"
@@ -89,7 +89,7 @@ const RegisterPage: React.FC = () => {
 
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium text-[var(--text-primary)] opacity-80">
-                Email
+                E-pošta
               </label>
               <input
                 type="email"
@@ -105,7 +105,7 @@ const RegisterPage: React.FC = () => {
 
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium text-[var(--text-primary)] opacity-80">
-                Password
+                Geslo
               </label>
               <input
                 type="password"
@@ -126,16 +126,16 @@ const RegisterPage: React.FC = () => {
             </div>
 
             <button type="submit" className="w-full py-3 mt-4 black-white-style">
-              Sign Up
+              Registriraj se
             </button>
           </form>
           <p className="text-center mt-4 text-sm text-[var(--text-primary)] opacity-70">
-            Already have an account?{" "}
+            Že imaš račun?{" "}
             <Link
               to="/sign-in"
               className="text-blue-500 hover:underline font-medium"
             >
-              Sign In
+              Prijavi se
             </Link>
           </p>
       </div>
