@@ -3,10 +3,10 @@ import { Lecture } from "../models/Lecture.js";
 
 export const createLecture = async (req, res) => {
   try {
-    const { classId, description, date, content, topics } = req.body;
+    const { classId, description, date, content, topics, title } = req.body;
 
     // Validate required fields
-    if (!classId || !description || !date || !content) {
+    if (!classId || !description || !date || !content || !title) {
       return res.status(400).json({
         message: "classId, description, date, and content are required",
       });
@@ -18,6 +18,7 @@ export const createLecture = async (req, res) => {
       date,
       content,
       topics: topics || [],
+      title,
     });
 
     const savedLecture = await lecture.save();
@@ -33,10 +34,11 @@ export const createLecture = async (req, res) => {
 
 export const getLecturesList = async (req, res) => {
   try {
-    const { classId } = req.params;
-    const lectures = await Lecture.find({class: classId}, "description date")
-      .sort({ date: -1 }); 
+    const classId = req.params.id;
 
+    const lectures = await Lecture.find({class: classId})
+      .sort({ date: -1 }); 
+    console.log(lectures);
     res.status(200).json(lectures);
   } catch (err) {
     res.status(400).json({

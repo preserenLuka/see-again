@@ -8,6 +8,10 @@ const lectureSchema = new mongoose.Schema(
       ref: "Class",
       required: true,
     },
+    title: {
+      type: String,
+      required: true,
+    },
     description: {
       type: String,
       required: true,
