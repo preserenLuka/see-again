@@ -22,15 +22,14 @@ const QuickView: React.FC<QuickViewProps> = ({ classId }) => {
       console.log(lectureList);
       setLectureList(response.data);
       console.log(lectureList);
-
     } catch (err) {
       console.error("Error fetching lectures:", err);
     }
   };
 
   useEffect(() => {
-  console.log("lectureList updated:", lectureList);
-}, [lectureList]);
+    console.log("lectureList updated:", lectureList);
+  }, [lectureList]);
   useEffect(() => {
     if (classId) {
       loadLectures();
@@ -39,10 +38,7 @@ const QuickView: React.FC<QuickViewProps> = ({ classId }) => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-       <CreateNewLecture 
-        onLectureCreated={loadLectures}
-        classId={classId}
-      />
+      <CreateNewLecture onLectureCreated={loadLectures} classId={classId} />
       {lectureList.map((item, index) => {
         const dateObj = new Date(item.date);
         const monthYear = dateObj.toLocaleString("en-US", {
@@ -73,7 +69,7 @@ const QuickView: React.FC<QuickViewProps> = ({ classId }) => {
             )}
 
             <div className="mb-6 last:mb-0">
-              <button className="inline-block rounded-lg border-2 p-2 pl-8 pr-8 border-border bg-primary-bg text-primary-text font-medium focus:outline-none hover:bg-stone-900 hover:text-slate-100 hover:border-blue-400 focus-visible:bg-stone-900 focus-visible:text-slate-100 focus-visible:border-blue-500 focus-visible:ring-4 focus-visible:ring-blue-300 transition-colors ">
+              <button className="inline-block px-2 py-2 black-white-style">
                 {item.title}
               </button>
               <p className="max-char-width text-primary-text text-lg mb-3 mt-3 leading-relaxed">

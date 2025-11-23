@@ -38,12 +38,12 @@ const TagInput: React.FC<TagInputProps> = ({ tags, setTags }) => {
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Enter a tag"
-          className="flex-1 rounded-lg border px-3 py-2 focus:ring focus:ring-blue-300"
+          className="flex-1 px-3 py-2 black-white-style"
         />
         <button
           type="button"
           onClick={addTag}
-          className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+          className="px-4 py-2 black-white-style"
         >
           Add
         </button>
@@ -51,10 +51,7 @@ const TagInput: React.FC<TagInputProps> = ({ tags, setTags }) => {
 
       <div className="flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <span
-            key={tag}
-            className="flex items-center gap-2 bg-gray-200 text-gray-800 px-3 py-1 rounded-full"
-          >
+          <span key={tag} className="flex items-center gap-2 black-white-style">
             {tag}
             <button
               type="button"
