@@ -20,23 +20,19 @@ const QuickView: React.FC<QuickViewProps> = ({ classId, lectures }) => {
   const [lectureList, setLectureList] = useState<QuickViewItem[]>([]);
   const [openLectureId, setOpenLectureId] = useState<string | null>(null);
 
-  // Load from API when class changes (only if no search results)
   const loadLectures = async () => {
     try {
       const response = await getLectures(classId);
       setLectureList(response.data);
-      console.log(lectureList);
     } catch (err) {
       console.error("Error fetching lectures:", err);
     }
   };
 
   useEffect(() => {
-    // If search results exist → use them
     if (lectures && lectures.length > 0) {
       setLectureList(lectures);
     }
-    // If search results are empty → fetch normally
     else if (classId) {
       loadLectures();
     }
@@ -62,8 +58,6 @@ const QuickView: React.FC<QuickViewProps> = ({ classId, lectures }) => {
           : null;
 
         const showHeader = monthYear !== prevMonthYear;
-
-        // Format date for display (e.g., 22.10.2025)
         const displayDate = dateObj.toLocaleDateString("sl-SI");
 
         return (

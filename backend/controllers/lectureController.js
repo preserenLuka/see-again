@@ -38,7 +38,6 @@ export const getLecturesList = async (req, res) => {
 
     const lectures = await Lecture.find({class: classId})
       .sort({ date: -1 }); 
-    console.log(lectures);
     res.status(200).json(lectures);
   } catch (err) {
     res.status(400).json({
@@ -84,8 +83,8 @@ export const searchLecture = async (req, res) => {
       title: { $regex: searchString, $options: "i" }
     });
 
-    if (TitleLectures){
-      return res.json({ TitleLectures });
+    if (TitleLectures.length > 0) {
+      return res.json({ lectures: TitleLectures });
     }
 
     const tagLectures = await Lecture.find({
@@ -93,9 +92,8 @@ export const searchLecture = async (req, res) => {
       topics: { $regex: searchString, $options: "i" }
     });
 
-    return res.json({ tagLectures });
+    return res.json({ lectures: tagLectures });
   } catch (err) {
-    console.error(err);
     res.status(500).json({ error: "Server error" });
   }
 };

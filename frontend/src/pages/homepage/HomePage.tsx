@@ -64,7 +64,7 @@ const HomePage: React.FC = () => {
             const response = await searchLectures(query, user.id);
 
             setView("notes");
-            setLectureList(response.data.lectures); // <-- FIXED
+            setLectureList(response.data.lectures);
           }}
         />
         <ActionBar

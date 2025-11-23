@@ -25,9 +25,6 @@ const RegisterPage: React.FC = () => {
   const onSubmit = async (data: RegisterFormData) => {
     try {
       const response = await createUser(data);
-
-      console.log("User created:", response.data);
-
       registerUser(data.email, data.firstName, data.lastName);
 
       useAuthStore.setState({
