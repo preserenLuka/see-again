@@ -14,7 +14,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5000/api", "https://see-again.madebyluka.com", "https://see-again-production.up.railway.app"],
+    origin: ["http://localhost:5173",               // your local frontend
+      "https://see-again.madebyluka.com",    // your custom domain
+      "https://see-again-production.up.railway.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
