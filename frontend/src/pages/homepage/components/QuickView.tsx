@@ -69,19 +69,19 @@ const QuickView: React.FC<QuickViewProps> = ({ classId, lectures }) => {
         return (
           <div key={item.id} className="mb-6">
             {showHeader && (
-              <h2 className="text-3xl font-bold text-primary-text mb-6 mt-8 first:mt-0">
+              <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 first:mt-0">
                 {monthYear}
               </h2>
             )}
 
             <div className="last:mb-0">
               <button
-                className="inline-block rounded-lg border-2 p-2 pl-8 pr-8 border-border bg-primary-bg text-primary-text font-medium focus:outline-none hover:bg-stone-900 hover:text-slate-100 hover:border-blue-400 focus-visible:bg-stone-900 focus-visible:text-slate-100 focus-visible:border-blue-500 focus-visible:ring-4 focus-visible:ring-blue-300 transition-colors"
+                className="inline-block  p-2 pl-8 pr-8 black-white-style"
                 onClick={() => setOpenLectureId(item.id)}
               >
                 {item.title}
               </button>
-              <p className="max-char-width max-w-prose text-gray-500 italic text-base mb-3 mt-3">
+              <p className="max-char-width max-w-prose text-[var(--text-primary)] opacity-60 italic text-base mb-3 mt-3">
                 {item.description}
               </p>
               {openLectureId === item.id && (
@@ -89,17 +89,17 @@ const QuickView: React.FC<QuickViewProps> = ({ classId, lectures }) => {
                   {item.content}
                 </p>
               )}
-              <div className="flex flex-wrap gap-6 text-secondary-text font-medium">
+              <div className="flex flex-wrap gap-6 text-[var(--text-primary)] opacity-70 font-medium">
                 {item.topics.map((tag, i) => (
                   <span
-                    className="border border-border rounded-lg px-2 py-0.5"
+                    className="border border-[var(--border-color)] rounded-lg px-2 py-0.5"
                     key={i}
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-6 text-secondary-text font-small">
+              <div className="flex flex-wrap gap-6 text-[var(--text-primary)] opacity-70 font-small">
                 <span className="py-2 px-1">{displayDate}</span>
                 <span className="py-2 px-1">
                   {getReadingMinutes(item.content)} min
