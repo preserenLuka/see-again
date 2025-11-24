@@ -22,7 +22,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   fetchUser: async () => {
     try {
-      const url = import.meta.env.VITE_DOMAIN_NAME || "http://localhost:5000/api"
+      const url = "https://see-again-production.up.railway.app/api"
       const res = await axios.get(`${url}/users/me`);
       set({ user: res.data, loading: false });
     } catch {
@@ -31,7 +31,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 
   logout: async () => {
-    const url = import.meta.env.VITE_DOMAIN_NAME || "http://localhost:5000/api"
+    const url = "https://see-again-production.up.railway.app/api"
     await axios.post(`${url}/users/logout`);
     set({ user: null });
   },
