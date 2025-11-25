@@ -22,16 +22,16 @@ structured, searchable, and accessible lecture notes.
 
 ##  Key Features
 
-- 🧠 **Automatic organization & metadata**  
+-  **Automatic organization & metadata**  
   AI-generated metadata such as lecture title, topic, description, and tags.
 
-- 🔍 **Full-text search across transcripts & notes**  
+-  **Full-text search across transcripts & notes**  
   Quickly find a concept, example, or definition in all lectures.
 
-- 🗂️ **Simple keyboard navigation**  
+-  **Simple keyboard navigation**  
   Move between subjects, lectures, and topics using only the keyboard.
 
-- 🗣️ **Narrator that announces context**  
+-  **Narrator that announces context**  
   Screen-reader–friendly structure that tells you *where you are* in the app.
 
 ---
