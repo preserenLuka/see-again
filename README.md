@@ -1,7 +1,8 @@
 
 <p align="center">
   <!-- Project Logo -->
-  ![Group 10](https://github.com/user-attachments/assets/2d9826f8-ee17-49a8-a373-7a47d4f4f555)
+  <img width="600" height="300" alt="Rectangle" src="https://github.com/user-attachments/assets/2d9826f8-ee17-49a8-a373-7a47d4f4f555" />
+
 
 </p>
 
@@ -64,4 +65,4 @@ The UI is designed with accessibility first:
 ##  Screenshots
 
 <img width="2240" height="2000" alt="Rectangle" src="https://github.com/user-attachments/assets/6cf34e8d-bc19-48d5-a1bd-ff98119d7d57" />
-![main](https://github.com/user-attachments/assets/235e788a-d6ab-4c72-9a62-ea273070453e)
+<img width="2240" height="2000" alt="Rectangle" src="https://github.com/user-attachments/assets/235e788a-d6ab-4c72-9a62-ea273070453e" />
